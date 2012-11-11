@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Copyright (C) 2012 Helsingfors Segelklubb ry
+  
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU Affero General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+  
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU Affero General Public License for more details.
+  
+   You should have received a copy of the GNU Affero General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<datastore-indexes autoGenerate="true">
+    <datastore-index kind="Veneet" ancestor="false">
+        <property name="Omistaja" direction="asc" />
+        <property name="Tyyppi" direction="asc" />
+        <property name="Paino" direction="desc" />
+    </datastore-index>
+    <datastore-index kind="Katsastustiedot" ancestor="false">
+        <property name="VeneID" direction="asc" />
+        <property name="Paiva" direction="desc" />
+    </datastore-index>
+    <datastore-index kind="Vartiovuorotiedot" ancestor="false">
+        <property name="JasenNo" direction="asc" />
+        <property name="Paiva" direction="asc" />
+    </datastore-index>
+    <datastore-index kind="Event" ancestor="true">
+        <property name="EventDate" direction="asc" />
+    </datastore-index>
+    <datastore-index kind="RaceFleet" ancestor="true">
+        <property name="EventDate" direction="asc" />
+    </datastore-index>
+    <datastore-index kind="RaceStart" ancestor="true">
+        <property name="EventDate" direction="asc" />
+    </datastore-index>
+    <datastore-index kind="RaceEntry" ancestor="false">
+        <property name="Fee" direction="asc" />
+        <property name="Paid" direction="asc" />
+    </datastore-index>
+    <datastore-index kind="Reservation" ancestor="true" source="manual">
+        <property name="Order" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="RaceEntry" ancestor="true" source="manual">
+        <property name="SailNo" direction="asc"/>
+    </datastore-index>
+</datastore-indexes>
