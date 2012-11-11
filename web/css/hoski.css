@@ -1,0 +1,78 @@
+/*
+ * Copyright (C) 2012 Helsingfors Segelklubb ry
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+html { background: white; font-family: arial; overflow-y: scroll; margin: 0; padding: 0; }
+body { padding: 0; margin: 0 }
+h1 { margin-top: 0 }
+a { color: mediumblue; }
+a:hover { color: blue; }
+textarea { width: 394px; }
+.buttons { margin-top: 20px; /*clear: both;*/ }
+.buttons input, .buttons button { font-size: 150%; }
+.error { border: 3px solid red; padding: 10px; margin-top: 20px }
+.info { border: 3px solid pink; padding: 10px; margin-bottom: 10px; }
+.success { border: 3px solid green; padding: 10px; margin-top: 20px }
+input[readonly] { color: grey }
+.nowrap { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ajaxload { background: url('/img/ajax-loader.gif') no-repeat 2px 4px; padding-left: 18px; }
+table { width: 100%; margin: 0; padding: 0; }
+td, th { text-align: left; padding: 0 2px; vertical-align: top; border-bottom: 1px dashed grey}
+#navi { padding: 10px }
+#navi a { color: grey; }
+@media print { #navi { display: none; }}
+#container { width: 960px; background: white; margin: 0 auto; padding: 0; }
+#column1 { float: left; width: 540px; padding: 10px; /* total width = 560px */ }
+#column2 { float: right; background: #D8D8D8; width: 380px;   padding: 10px; /* total width = 400 */ }
+#raceinfo p { padding: 0 4px; }
+#attachments li { margin: 0 0 0.5em 0; }
+#registration { clear: both; float: left; width: 800px; padding: 20px; margin: 20px 60px; border: 1px solid grey;}
+#registration h2 { margin: 0 }
+#registration #errors { clear:both; padding-top: 1px }
+#registration .buttons { clear:both; text-align: center }
+#racecolumn1 { float: left; }
+#racecolumn2 { float: right }
+#hoskiswapcalendar { width: auto }
+#hoskiswapcalendar th { border-bottom: none; text-align: center }
+#hoskiswapcalendar td { border-bottom: none; padding: 0 4px; }
+.public span { font-weight: bold; }
+.required span:after { content: " *" }
+.columnWide { clear: both; padding: 10px }
+ul { list-style-type: none; margin: 0; padding: 0}
+ul.menu { list-style-type: square; padding: 0 20px; font-size: 140% }
+p.l1 { font-weight: bold; margin: 1.5em 0 1em }
+p.l2 { margin: 0.5em 0; }
+.menu li { margin-bottom: 14px; }
+.races ul.l2 { padding-left: 40px; }
+.events a { text-decoration: none }
+.events .closed { color: grey; text-decoration: underline; }
+.events .open { text-decoration: underline; }
+.events .closed .deadline { font-weight: bold; }
+label, div.label { display: block; margin-bottom: 10px;}
+label strong, div.label strong { display: block; }
+label input[type=text], div.label input[type=text] { width: 394px; }
+label select, div.label select { width: 394px; }
+.raceform label, .raceform div.label { display: block; margin-bottom: 10px; margin: 4px 0}
+.raceform label > span:first-child, .raceform div.label > span:first-child { display: block; font-size: 80%; padding: 0 1px}
+.raceform label input[type=text], .raceform div.label input[type=text] { font-size: 120%; width: 350px }
+.raceform input.notOk { border: 3px solid red; }
+small, .small { display: block; font-size: 80%; font-weight: normal; }
+button small, .extrasmall { display: block; font-size: 60%; font-weight: normal; }
+div.hoskipopup { font-size: 1em!important; }
+
+/* for jquery.tablsorter.js */
+thead .header {  background: url('/img/bg.gif') no-repeat center right; cursor: pointer; padding: 0 4px 0 2px; }
+thead .headerSortUp { background-image: url('/img/asc.gif'); }
+thead .headerSortDown { background-image: url('/img/desc.gif'); }
