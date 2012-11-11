@@ -1,0 +1,46 @@
+<!--
+   Copyright (C) 2012 Helsingfors Segelklubb ry
+  
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU Affero General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+  
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU Affero General Public License for more details.
+  
+   You should have received a copy of the GNU Affero General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+  <head>
+    <title>HSK:n jäsensivut</title>
+    <link rel="stylesheet" type="text/css" href="/css/hoski.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="hoskievents" content="/member/menu?menuKind=Event" />
+    <meta name="hoskiuser" content="/login" />
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/hoskilogon.js"></script>
+    <script type="text/javascript" src="/js/hoskievent.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="navi">
+	<a href="/member/">&#x21A9; Palaa takaisin pääsivulle.</a>
+      </div>
+      <div id="column1">
+        <h1>Varaukset</h1>
+        <h2>Tulevat tapahtumat</h2>
+        <div id="hoskievents" class="ajaxload events">&nbsp;</div>
+      </div>
+      <div id="column2">
+	<p>Tällä sivulla näet tulevat tapahtumat.</p>
+	<p>Tapahtuman sivulta näet myös jo tapahtumaan ilmoittautuneet.</p>
+      </div>	
+    </div>
+  </body>
+</html>
