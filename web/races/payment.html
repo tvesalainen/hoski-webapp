@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ilmoittautuminen</title>
+        <link rel="stylesheet" type="text/css" href="../css/hoski.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="keyinfo" content="/races/keyinfo" />
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/hoskikeyinfo.js"></script>
+        <script type="text/javascript" src="/js/hoskicommon.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/hoski.css" />
+    </head>
+    <body>
+      <div id="container">
+	<div id="navi">
+	  <a href="/races/">&#x21A9; Palaa takaisin kilpailusivulle.</a>
+	</div>
+	<div id="column1" xmlns:hoski="http://www.hoski.fi/ns" >
+          <h1>Maksuohjeet<small>Betalningsinstruktioner/Payment instructions</small></h1>
+
+	  <table id="entry">
+	    <tr><td>Kilpailu <small>Tävling/Race</small></td><td><strong><span hoski:keyinfo="RaceSeries.Event" class="ajaxload">&nbsp;</span> <span hoski:keyinfo="RaceSeries.FromTo">&nbsp;</span><span hoski:keyinfo="Year.Year">&nbsp;</span>, <span hoski:keyinfo="Fleet">&nbsp;</span></strong></td></tr>
+	    <tr><td>Kippari <small>Skeppare/Skipper</small></td><td><strong hoski:keyinfo="HelmName">&nbsp;</strong></td></tr>
+	    <tr><td>Purjenumero <small>Segel/Sail</small></td><td><strong><span hoski:keyinfo="Nat">&nbsp;</span>-<span hoski:keyinfo="SailNo">&nbsp;</span></strong></td></tr>
+	  </table>
+
+	  <p>&nbsp;</p>
+
+	  <div hoski:unlesskeyinfo="RaceFleet.isFree" style="display:none">
+	    <table id="paymentinstructions">
+	      <tr><td>Maksun saaja: <small>Mottagere/Payee</small></td><td><strong>Helsingfors Segelklubb ry</strong></td></tr>
+	      <tr><td>BIC: <small>Bank Identifier Code</small></td><td><strong hoski:keyinfo="bic" class="ajaxload">&nbsp;</strong></td></tr>
+	      <tr><td>IBAN: <small>International Bank Account Number</small></td><td><strong hoski:keyinfo="iban">&nbsp;</strong></td></tr>
+	      <tr><td>Viitenumero: <small>Referens nummer/Reference number</small></td><td><strong hoski:keyinfo="rf">&nbsp;</strong></td></tr>
+              <tr><td>Eräpäivä: <small>Förfallodag/Due date</small></td><td><strong hoski:keyinfo="dueday">&nbsp;</strong></td></tr>
+	      <tr><td>Summa (EUR): <small>Summa/Sum</small></td><td><strong><span hoski:keyinfo="total">&nbsp;</span> &#x20AC;</strong> <span hoski:ifkeyinfo="isClubDiscountGranted" style="display:none">(sis. HSK-alennus)</span></td></tr>
+            </table>
+	    
+            <p>Voit maksaa osallistumismaksun myös käyttäen alla olevaa virtuaaliviivakoodia tai viivakoodia.</p>
+            
+            <p><strong hoski:keyinfo="barcode5">&nbsp;</strong></p>
+	    
+            <div>
+              <canvas id="barcode" hoski:keyinfo="bars" height="100" width="500"></canvas>
+            </div>
+
+	    <p>Ilmoittautumisesi ei ole virallinen ennen kuin maksu on
+	      suoritettu. // Din anmälning är inte officiell innan
+	      betalningen har skett. // Your entry is not official until
+	      the payment has been made.</p>
+	  </div>
+
+	  <div hoski:ifkeyinfo="RaceFleet.isFree" style="display:none">
+	    <p>Tällä kilpailulla ei ole ilmoittautumismaksua. // Ingen Avgift. // No fee.</p>
+	  </div>
+        </div>
+<!--
+	<div id="column2">
+	  <p>&nbsp;</p>
+	</div>
+-->
+      </div>
+    </body>
+</html>
