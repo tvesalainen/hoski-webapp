@@ -2,12 +2,11 @@
 <jnlp codebase="http://hsk-members.appspot.com/HoskiAdmin/" href="launch.jnlp" spec="1.0+">
     <information>
         <title>HoskiAdmin</title>
-        <vendor>tkv</vendor>
-        <homepage href=""/>
+        <vendor>Hoski</vendor>
+        <homepage href="http://www.hoski.fi/"/>
         <description>HoskiAdmin</description>
         <description kind="short">HoskiAdmin</description>
         <icon href="club.ico" kind="default"/>
-        <offline-allowed/>
         <shortcut online="true" install="true">
               <desktop/>
               <menu submenu="Hoski"/>
