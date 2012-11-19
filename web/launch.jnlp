@@ -8,7 +8,7 @@
         <description kind="short">HoskiAdmin</description>
         <icon href="club.ico" kind="default"/>
         <offline-allowed/>
-        <shortcut online="false" install="false">
+        <shortcut online="true" install="true">
               <desktop/>
               <menu submenu="Hoski"/>
         </shortcut>
@@ -18,7 +18,7 @@
 <all-permissions/>
 </security>
     <resources>
-        <j2se java-vm-args="-d32 -ea -Duser.language=fi -Duser.country=FI" version="1.7+"/>
+        <j2se java-vm-args="-ea -Duser.language=fi -Duser.country=FI" version="1.7+"/>
         <jar href="HoskiAdmin.jar" main="true"/>
     <jar href="lib/HoskiLib.jar"/>
 <jar href="lib/appengine-remote-api.jar"/>
