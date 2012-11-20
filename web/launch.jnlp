@@ -7,6 +7,7 @@
         <description>HoskiAdmin</description>
         <description kind="short">HoskiAdmin</description>
         <icon href="club.ico" kind="default"/>
+        <offline-allowed/>
         <shortcut online="true" install="true">
               <desktop/>
               <menu submenu="Hoski"/>
@@ -19,17 +20,17 @@
     <resources>
         <j2se java-vm-args="-ea -Duser.language=fi -Duser.country=FI" version="1.7+"/>
         <jar href="HoskiAdmin.jar" main="true"/>
-    <jar href="lib/HoskiLib.jar"/>
-<jar href="lib/appengine-remote-api.jar"/>
-<jar download="lazy" href="lib/opencsv-2.3.jar"/>
-<jar download="lazy" href="lib/json-org.jar"/>
-<jar download="lazy" href="lib/gdata-client-1.0.jar"/>
-<jar download="lazy" href="lib/gdata-core-1.0.jar"/>
-<jar download="lazy" href="lib/gdata-spreadsheet-3.0.jar"/>
-<jar download="lazy" href="lib/guava-12.0.jar"/>
-<jar href="lib/appengine-api-1.0-sdk-1.6.6.jar"/>
-<jar href="lib/jnlp.jar"/>
-</resources>
+        <jar href="lib/HoskiLib.jar"/>
+        <jar href="lib/appengine-remote-api.jar"/>
+        <jar download="lazy" href="lib/opencsv-2.3.jar"/>
+        <jar download="lazy" href="lib/json-org.jar"/>
+        <jar download="lazy" href="lib/gdata-client-1.0.jar"/>
+        <jar download="lazy" href="lib/gdata-core-1.0.jar"/>
+        <jar download="lazy" href="lib/gdata-spreadsheet-3.0.jar"/>
+        <jar download="lazy" href="lib/guava-12.0.jar"/>
+        <jar href="lib/appengine-api-1.0-sdk-1.6.6.jar"/>
+        <jar href="lib/jnlp.jar"/>
+    </resources>
     <application-desc main-class="fi.hoski.remote.ui.Admin">
     <argument>C:\Jasenrekisteri\replicator.properties</argument>
 </application-desc>
