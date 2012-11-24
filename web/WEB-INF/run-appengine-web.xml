@@ -32,6 +32,7 @@
 
     <!-- The following line requires App Engine 1.3.2 SDK -->
         <include path="**.nocache.*" expiration="0s" />
+        <include path="**.jnlp*" expiration="0s" />
         <include path="/js/*.js" expiration="0s" /> <!-- TODO -->
         <include path="/css/*.css" expiration="0s" />
 
