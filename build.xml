@@ -94,7 +94,7 @@
             <arg value="/c"/>
             <arg value="${appcfg}"/>
             <arg value="-e"/>
-            <arg value="sovellus.kehitys@hoski.fi"/>
+            <arg value="johanna.vesalainen@gmail.com"/>
             <arg value="update"/>
             <arg value="dist\war"/>
         </exec>
