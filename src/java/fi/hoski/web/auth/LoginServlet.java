@@ -59,6 +59,7 @@ public class LoginServlet extends HttpServlet {
     throws ServletException, IOException {
     response.setCharacterEncoding("UTF-8");
 
+    response.setHeader("Cache-Control", "private, max-age=0, no-cache");
     String action = request.getParameter("action");
     try {
       if (action == null || action.equals("login")) {
