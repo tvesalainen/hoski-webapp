@@ -98,7 +98,7 @@
             <arg value="update"/>
             <arg value="dist\war"/>
         </exec>
-        <delete dir="dist\war"/>
+        <delete dir="dist\war"/> 
     </target>
     <target name="debug">   <!-- not working -->
         <copy file="dist/war/WEB-INF/run-appengine-web.xml" tofile="dist/war/WEB-INF/appengine-web.xml"/>
