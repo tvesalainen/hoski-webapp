@@ -88,7 +88,6 @@
         <unzip src="${dist.war}" dest="${dist.dir}/war"/>
     </target>
     <target name="run-deploy">
-        <copy file="dist/war/WEB-INF/test-appengine-web.xml" tofile="dist/war/WEB-INF/appengine-web.xml"/>
         <property file="nbproject/private/private.properties"/>
         <exec executable="cmd" inputstring="${appenginepwd}">
             <arg value="/c"/>
