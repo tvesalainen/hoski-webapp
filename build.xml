@@ -94,24 +94,11 @@
             <arg value="/c"/>
             <arg value="${appcfg}"/>
             <arg value="-e"/>
-            <arg value="sovellus.kehitys@hoski.fi"/>
+            <arg value="johanna.vesalainen@gmail.com"/>
             <arg value="update"/>
             <arg value="dist\war"/>
         </exec>
         <delete dir="dist\war"/> 
-    </target>
-    <target name="debug">   <!-- not working -->
-        <copy file="dist/war/WEB-INF/run-appengine-web.xml" tofile="dist/war/WEB-INF/appengine-web.xml"/>
-        <property file="nbproject/private/private.properties"/>
-        <exec executable="cmd" inputstring="${appenginepwd}">
-            <arg value="/c"/>
-            <arg value="${appcfg}"/>
-            <arg value="-e"/>
-            <arg value="sovellus.kehitys@hoski.fi"/>
-            <arg value="update"/>
-            <arg value="dist\war"/>
-        </exec>
-        <delete dir="dist\war"/>
     </target>
     <target name="-run-deploy-nb"></target>
     <target name="-init-deploy-ant"></target>
