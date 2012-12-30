@@ -54,7 +54,7 @@ font-family: Helvetica,Arial,sans-serif;
 {
 	float: left;
 	width: 170px;
-	padding: 20px 0;
+	padding: 0px 0;
 	margin: 0 20px;
 	display: inline;
 }
@@ -78,18 +78,28 @@ font-family: Helvetica,Arial,sans-serif;
 #menu p
 {
     margin: 0;
-    padding: 5px;
+    padding: 10px;
 }
 
 #text
 {
 	float: left;
-	width: 560px;
-	padding: 20px 0;
-	margin: 0 0 0 30px;
+	width: 770px;
+	padding: 0px 0;
+	margin: 0px 0px;
+        background: white;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 0px solid;
 }
 
+#text p
+{
+    margin: 10px;
+}
 
+/*
 #rightside
 {
 	float: right;
@@ -98,13 +108,15 @@ font-family: Helvetica,Arial,sans-serif;
 	margin: 0 0px 0 0;
 	display: inline;
 }
+*/
 
 #footer
 {
 	clear: left;
 	text-align: center;
 	padding: 0px;
-	height: 160px;
+	height: 125px;
+        color: gray;
 }
 
 #logos
