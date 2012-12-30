@@ -91,6 +91,8 @@ public class MenuServlet extends HttpServlet {
       throw new ServletException(MENUKIND + " not set");
     }
     Query query = new Query(kind);
+    Key yearKey = entities.getYearKey();
+    query.setAncestor(yearKey);
     query.setKeysOnly();
     setFilter(query, c);
     //query.addFilter(Event.EVENTDATE, Query.FilterOperator.GREATER_THAN_OR_EQUAL, new Day().getValue());
