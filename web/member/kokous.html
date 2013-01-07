@@ -17,31 +17,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HSK:n kilpailusivut</title>
-    <link rel="stylesheet" type="text/css" href="../css/hoski.css" />
+    <title>HSK:n jäsensivut</title>
+    <link rel="stylesheet" type="text/css" href="/css/hoski.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="hoskievents" content="/races/menu?menuKind=RaceFleet&amp;filter=Ranking$ne;true" />
-    <meta name="hoskiweekly" content="/races/menu?menuKind=RaceFleet&amp;filter=Ranking$ne;false" />
+    <meta name="keyinfo" content="/member/keyinfo?attachment=Kokous" />
+    <meta name="hoskiuser" content="/login" />
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/hoskievent.js"></script>
+    <script type="text/javascript" src="/js/hoskilogon.js"></script>
+    <script type="text/javascript" src="/js/hoskikeyinfo.js"></script>
   </head>
   <body>
     <div id="container">
-      <div id="navi">&nbsp;</div>
-      <div id="column1">
-        <h1>HSK tulevat kilpailut <small>Kommande tävlingar/Upcoming races</small></h1>
-        <div id="hoskievents" class="ajaxload events races">&nbsp;</div>
-        <div id="hoskiweekly" class="ajaxload events races">&nbsp;</div>
+      <div id="navi">
+	<a href="/member/index.html">&#x21A9; Palaa edelliselle sivulle.</a>
       </div>
+      <div id="column1">
+        <h1>Kokoustiedostoja</h1>
 
-      <div id="column2">
-	<p>Tervetuloa HSK:n kilpailusivuille.</p>
-	<p>Välkommen till HSK tävlingssidan.</p>
-	<p>Welcome to the HSK race pages.</p>
-        <p/>
-	<p>HSK:n veneet eivät maksa kilpailumaksua, paitsi LM-, SM-, PM-, EM- ja MM-kisoissa.</p>
-        <p><small><a href="/source.html">Lähdekoodi</a></small>
-      </div>	
+	<ul class="menu" id="attachments" hoski:keyinfo="Attachments">&nbsp;</ul>
+
+      </div>
     </div>
   </body>
 </html>

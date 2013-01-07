@@ -1,0 +1,221 @@
+<!--
+   Copyright (C) 2012 Helsingfors Segelklubb ry
+  
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU Affero General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+  
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU Affero General Public License for more details.
+  
+   You should have received a copy of the GNU Affero General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HSK:n jäsensivut</title>
+    <link rel="stylesheet" type="text/css" href="../css/hoski.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="hoskiuser" content="/login" />
+    <meta name="keyinfo" content="/member/keyinfo" />
+    <meta name="hoskiinsopt" content="/member/insopt" />
+    <meta name="hoskireservations" content="/member/list?sortProperty=Order&amp;properties=${reservation-properties}&amp;kind=${reservation-kind}" />
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="/js/hoskicommon.js"></script>
+    <script type="text/javascript" src="/js/hoskiform.js"></script>
+    <script type="text/javascript" src="/js/hoskikeyinfo.js"></script>
+    <script type="text/javascript" src="/js/hoskiinsopt.js"></script>
+    <script type="text/javascript" src="/js/hoskievent.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="navi">
+	<a href="/member/reservations.html">&#x21A9; Palaa edelliselle sivulle.</a>
+      </div>
+      <div id="column1" xmlns:hoski="http://www.hoski.fi/ns" >
+	<h1>Veneen lasku</h1>
+
+	<p><strong hoski:keyinfo="Label" class="ajaxload">&nbsp;</strong></p>
+	
+	<div class="error" hoski:ifkeyinfo="isEventClosed" style="display:none">
+	  <p>Ilmoittautuminen tähän tapahtumaan on suljettu.</p>
+	</div>
+
+	<div hoski:unlesskeyinfo="isEventClosed">
+	  <div class="error" hoski:ifkeyinfo="isEventFull" style="display:none">
+	    <p>Tämä tapahtuma on täynnä.</p>
+	  </div>
+
+	  <form class="hoskiform event" hoski:unlesskeyinfo="isEventFull" action="/member/event" method="post" style="display:none">
+	    <div>
+	      <input type="hidden" name="event" value="" />
+	      
+	      <h2>Omistajan tiedot</h2>
+	      <label>
+		<strong>Etunimi</strong>
+		<input class="hoskiform ajaxload" type="text" name="Firstname" readonly="readonly"/>
+	      </label>
+	      <label>
+		<strong>Sukunimi</strong>
+		<input class="hoskiform" type="text" name="Jasenet.Sukunimi" readonly="readonly"/>
+	      </label>
+	      <label>
+		<strong>Sähköpostiosoite</strong>
+		<input class="hoskiform" type="text" name="Jasenet.Email" />
+	      </label>
+	      <label>
+		<strong>Puhelinnumero</strong>
+		<input class="hoskiform" type="text" name="Jasenet.Mobile" />
+	      </label>
+	      
+	      
+	      <h2>Veneen tiedot</h2>
+	      <label>
+		<strong>Veneen valinta</strong>
+		<select id="boat" name="Veneet.key" hoski:collection="Boats" hoski:label="Veneet.Nimi">
+		</select>
+	      </label>
+	      
+	      <div hoski:on="boat">
+		<input class="hoskiform" type="hidden" name="Veneet.Nimi"/>
+		<label>
+		  <strong>Paino</strong>
+		  <input class="hoskiform" type="text" name="Veneet.Paino" readonly="readonly"/>
+		</label>
+		<label>
+		  <strong>Venetyyppi</strong>
+		  <input class="hoskiform" type="text" name="Venetyyppit.Tyyppi" readonly="readonly"/>
+		</label>
+		<label>
+		  <strong>Laiturin kirjain</strong>
+		  <input class="hoskiform" type="text" name="Laiturit.Tunnus" readonly="readonly"/>
+		</label>
+		<label>
+		  <strong>Paikan numero</strong>
+		  <input class="hoskiform" type="text" name="Laituripaikat.Paikka" readonly="readonly"/>
+		</label>
+		<label>
+		  <strong>Talvisäilytyssopimuksen numero</strong>
+		  <input class="hoskiform" type="text" name="Veneet.TalvipaikkaNo" readonly="readonly"/>
+		</label>
+                <input type="hidden" name="BasicInspection" value="" />
+
+		<div xmlns:hoski="http://www.hoski.fi/ns" class="info" style="display:none" hoski:if="BasicInspection">
+		  <p><strong>HUOM! Veneesi täytyy runkokatsastaa ennen laskua. Runkokatsastus
+		  varataan erikseen. Alta voit varata vain vuosikatsastuksen.</strong></p>
+		</div>
+
+		<h2>Katsastuksen varaus</h2>
+
+		<label>
+		  <strong>Varaan katsastuksen</strong>
+		  <select id="hoskiinsopt" class="ajaxload" name="event"></select>
+		</label>
+		<label>
+		  <strong>Katsastusluokka</strong>
+		  <select name="Katsastusluokka">
+		    <option value="1">1: Avomeri</option>
+		    <option value="2">2: Rannikko</option>
+		    <option value="3">3: Saaristo</option>
+		    <option value="4">4: Suojaiset vesialueet</option>
+		  </select>
+		</label>
+	      </div>
+
+
+	      <h2>Lisätietoja koskien vesille laskua tai katsastusta</h2>
+
+	      <label>
+		<textarea cols="40" rows="3" name="Notes"></textarea>
+	      </label>
+	      
+	      <div class="error e400" id="eNoEvent" style="display:none">
+		<h2>Tapahtuma puuttuu</h2>
+		<p>Valitsemaasi tapahtumaa ei enää löydy
+		järjestelmästä. Yritä uudelleen ja mikäli ongelma toistuu,
+		ole yhteydessä
+		toimistoon <a href="mailto:toimisto@hoski.fi">toimisto@hoski.fi</a>.</p>
+	      </div>
+
+	      <div class="error e403" style="display:none">
+		<h2>Istunto on vanhentunut</h2>
+		<p>Sisäänkirjautumisestasi on kulunut liian kauan tai olet
+		kirjautunut ulos. Palaa <a href="/member/">jäsensivuille</a>
+		ja yritä uudelleen.</p>
+	      </div>
+	      
+	      <div class="error" id="eDoubleBooking" style="display:none">
+		<h2>Olet jo ilmoittautunut</h2>
+		<p>Olet jo ilmoittautunut. Voit tarkistaa ilmoittautumisesi
+		ilmoittautuneiden listasta.  Mikäli haluat muuttaa
+		ilmoittautumistasi, ole yhteydessä toimistoon
+		<a href="mailto:toimisto@hoski.fi">toimisto@hoski.fi</a>.</p>
+	      </div>
+
+	      <div class="error" id="eEventFull" style="display:none">
+		<h2>Tapahtuma on täynnä</h2>
+		<p>Tämä tapahtuma on jo täynnä. Valitse toinen tapahtuma tai
+		ole yhteydessä
+		toimistoon <a href="mailto:toimisto@hoski.fi">toimisto@hoski.fi</a>.</p>
+	      </div>
+
+	      <div class="error" id="eBoatNotFound" style="display:none">
+		<h2>Venettä ei löydy</h2>
+		<p>Et voi ilmoittautua, koska seuran rekisterissä ei ole
+		sinulle merkittyä venettä.  Ole yhteydessä
+		toimistoon <a href="mailto:toimisto@hoski.fi">toimisto@hoski.fi</a>.</p>
+	      </div>
+	      
+	      <div class="error" id="eMandatoryPropertyMissing" style="display:none">
+		<h2>Pakollinen tieto puuttuu</h2>
+		<p>Et voi ilmoittautua, koska seuran rekisterissä ei ole
+		veneellesi kaikkia tarvittavia tietoja.  Ole yhteydessä
+		toimistoon <a href="mailto:toimisto@hoski.fi">toimisto@hoski.fi</a>.</p>
+	      </div>
+	      
+	      <div class="error e500" style="display:none">
+		<h2>Järjestelmä on vikaantunut</h2>
+		<p>Järjestelmässä tapahtui odottamaton virhe. Voit
+		kokeilla hetken päästä uudestaan. Mikäli virhe ei
+		poistu, ole yhteydessä
+		toimistoon <a href="mailto:toimisto@hoski.fi">toimisto@hoski.fi</a>.</p>
+	      </div>
+	      
+	      <div class="buttons">
+		<input type="hidden" id="nextURL" name="nextURL" value="/member/" />
+		<input type="submit" name="submit" value="Lähetä" />
+	      </div>
+
+	      <div class="success e200" style="display:none">
+		<h2>Ilmoittautumisesi on vastaanotettu</h2>
+		<p>Saat sähköpostia yllä ilmoittamaasi osoitteeseen, kun laskujärjestys on määrätty.</p>
+		<p><a href="/member/">Palaa tästä takaisin jäsensivuille.</a></p>
+	      </div>
+	    </div>
+	  </form>
+	</div>
+      </div>
+      <div id="column2">
+	<p>Tällä lomakkeella ilmoittaudut veneen laskuun ja vuosikatsastukseen.</p>
+	<p>Ilmoittautumisen yhteydessä voit antaa tilapäiset yhteystietosi (vain tätä tapahtumaa varten).</p>
+	<p>Jos lomakkeen tiedoissa on virheitä, ilmoitathan niistä toimistoon <a href="mailto:toimisto@hoski.fi">toimisto@hoski.fi</a>.</p> 
+	<p>Lomakkeen lopussa olevaan lisätietokenttään voit kirjoittaa viestin erityistä huomiota vaativista asioista.</p>
+
+	<h2>Ilmoittautuneet</h2>
+	<table class="hoskireservations">
+	  <thead>
+	    <tr><th>#</th><th>Vene</th><th colspan="2">Nimi</th></tr>
+	  </thead>
+	  <tbody id="hoskireservations">
+	    <tr><td colspan="4" class="ajaxload">&nbsp;</td></tr>
+	  </tbody>
+	</table>
+      </div>
+    </div>
+  </body>
+</html>
