@@ -29,6 +29,13 @@ $(function() {
     hoskiweekly.removeClass("ajaxload");
   });
 
+  var hoskiresults = $("#hoskiresults");
+  var hoskiresultsservice = $("meta[name='hoskiresults']").attr("content");
+
+  hoskiresults.load(hoskiresultsservice, function() {
+    hoskiresults.removeClass("ajaxload");
+  });
+
   var hoskireservations = $("#hoskireservations");
   var hoskireservationslink = $("a#hoskireservationslink");
   var hoskireservationstotal = $("#hoskireservationstotal");

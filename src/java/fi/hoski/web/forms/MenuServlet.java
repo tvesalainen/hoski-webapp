@@ -13,7 +13,7 @@
  *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 package fi.hoski.web.forms;
 
 import com.google.appengine.api.datastore.*;
@@ -91,8 +91,11 @@ public class MenuServlet extends HttpServlet {
       throw new ServletException(MENUKIND + " not set");
     }
     Query query = new Query(kind);
-    Key yearKey = entities.getYearKey();
-    query.setAncestor(yearKey);
+    boolean all = c.getBooleanParameter("all");
+    if (!all) {
+      Key yearKey = entities.getYearKey();
+      query.setAncestor(yearKey);
+    }
     query.setKeysOnly();
     setFilter(query, c);
     //query.addFilter(Event.EVENTDATE, Query.FilterOperator.GREATER_THAN_OR_EQUAL, new Day().getValue());
