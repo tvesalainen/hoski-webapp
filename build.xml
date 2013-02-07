@@ -89,7 +89,7 @@
     </target>
     <target name="run-deploy">
         <property file="nbproject/private/private.properties"/>
-        <exec executable="cmd" inputstring="${appenginepwd}">
+        <exec executable="cmd" inputstring="${appenginepwd2}">
             <arg value="/c"/>
             <arg value="${appcfg}"/>
             <arg value="-e"/>
