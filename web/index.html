@@ -2,11 +2,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Helsinki Regatta</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/hr.css" />
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <meta name="hoskievents" content="/races/menu?menuKind=RaceFleet&amp;filter=Ranking$ne;true" />
+    <meta name="hoskiweekly" content="/races/menu?menuKind=RaceFleet&amp;filter=Ranking$ne;false" />
+    <meta name="hoskiresults" content="/races/menu?menuKind=Attachment&amp;filter=Type$equals;2&amp;all=true" />
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/hoskievent.js"></script>        
+        
         <script src="/js/lang.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+        <script src="/js/menu.js"></script>
 
 
     </head>
@@ -25,36 +32,76 @@
             <div id="content">
                 <div id="leftside">
                     <div id="menu">
-                        <p><a href="#">Etusivu</a></p>
-                        <p><a href="#">Kilpailukutsu</a></p>
-                        <p><a href="#">Ilmoittautuminen</a></p>
-                        <p><a href="#">Tulokset</a></p>
-                        <p><a href="#">Yhteystiedot</a></p>
+                        <p class="menu-item etusivu"><a lang="fi" href="#">Etusivu</a><a lang="sv" href="#">Hemsida</a><a lang="en" href="#">Home</a></p>
+                        <p class="menu-item kilpailukutsu"><a lang="fi" href="#">Kilpailukutsu</a><a lang="sv" href="#">Tävlingsinbjudan</a><a lang="en" href="#">Notice of Race</a></p>
+                        <p class="menu-item ilmoittautuminen"><a lang="fi" href="#">Ilmoittautuminen</a><a lang="sv" href="#">Anmälan</a><a lang="en" href="#">Entry</a></p>
+                        <p class="menu-item purjehdusohjeet"><a lang="fi" href="#">Purjehdusohjeet</a><a lang="sv" href="#">Seglingsföreskrifter</a><a lang="en" href="#">Sailing instructions</a></p>
+                        <p class="menu-item tulokset"><a lang="fi" href="#">Tulokset</a><a lang="sv" href="#">Resultat</a><a lang="en" href="#">Results</a></p>
+                        <p class="menu-item yhteystiedot"><a lang="fi" href="#">Yhteystiedot</a><a lang="sv" href="#">Kontaktuppgifter</a><a lang="en" href="#">Contacts</a></p>
+                        <p class="menu-item valokuvia"><a lang="fi" href="#">Valokuvia</a><a lang="sv" href="#">Bilder</a><a lang="en" href="#">Photos</a></p>                        
                     </div>
 
                     <br><br>
-   
-<!-- liput valmiina                    <span lang="fi"><img class="setlanguage" id="sv" src="img/sv_lippu.jpg">
-                        <img class="setlanguage" id="en" src="img/en_lippu.jpg"></span>
 
-                    <span lang="sv"><img class="setlanguage" id="fi" src="img/fi_lippu.jpg">
-                        <img class="setlanguage" id="en" src="img/en_lippu.jpg"></span>
+                    <span lang="fi"><img class="setlanguage" id="sv" src="img/sv_lippu.jpg"><img class="setlanguage" id="en" src="img/en_lippu.jpg"></span>
+                    <span lang="sv"><img class="setlanguage" id="fi" src="img/fi_lippu.jpg"><img class="setlanguage" id="en" src="img/en_lippu.jpg"></span>
+                    <span lang="en"><img class="setlanguage" id="fi" src="img/fi_lippu.jpg"><img class="setlanguage" id="sv" src="img/sv_lippu.jpg"></span> 
 
-                                            <span lang="en"><img class="setlanguage" id="fi" src="img/fi_lippu.jpg">
-                    <img class="setlanguage" id="sv" src="img/sv_lippu.jpg"></span> 
--->                        
 
-                    <img class="setlanguage" id="fi" src="img/fi_lippu.jpg">
-                    <img class="setlanguage" id="sv" src="img/sv_lippu.jpg">
-                    <img class="setlanguage" id="en" src="img/en_lippu.jpg">
+                    <!--                    <img class="setlanguage" id="fi" src="img/fi_lippu.jpg">
+                                        <img class="setlanguage" id="sv" src="img/sv_lippu.jpg">
+                                        <img class="setlanguage" id="en" src="img/en_lippu.jpg">
+                    -->
 
                 </div>
                 <div id="text">
 
-                    <p>Tähän tulee siis sitten itse tarinat.</p>
-                    <p>Tämä laatikko kasvaa sitä mukaa, kun tekstiä tulee lisää. Kasvatanpa siis vähän niin näkee miltä tämä tulisi näyttämään</p>
-<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-        <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+                    <div id="etusivu" class="menu-target default-menu">
+                        <p lang="fi">Tervetuloa!</p>
+                        <p lang="sv">Välkommen</p>
+                        <p lang="en">Welcome!</p>
+                    </div>
+
+                    <div id="kilpailukutsu" class="menu-target">
+                        <h2 lang="fi">Kilpailukutsu</h2>
+                        <h2 lang="sv">Tävlingsinbjudan</h2>
+                        <h2 lang="en">Notice of Race</h2>
+                    </div>
+
+                    <div id="ilmoittautuminen" class="menu-target">
+                        <h2 lang="fi">Ilmoittautuminen</h2>
+                        <h2 lang="sv">Anmälan</h2>
+                        <h2 lang="en">Entry</h2>
+                        <div id="hoskievents" class="ajaxload events races">&nbsp;</div>
+                    </div>
+
+                    <div id="purjehdusohjeet" class="menu-target">
+                        <h2 lang="fi">Purjehdusohjeet</h2>
+                        <h2 lang="sv">Seglingsföreskrifter</h2>
+                        <h2 lang="en">Sailing instructions</h2>                        
+                    </div>
+
+                    <div id="tulokset" class="menu-target">
+                        <h2 lang="fi">Tulokset</h2>
+                        <h2 lang="sv">Resultat</h2>
+                        <h2 lang="en">Results</h2>
+                    </div>
+
+                    <div id="yhteystiedot" class="menu-target">
+                        <h2 lang="fi">Yhteystiedot</h2>
+                        <h2 lang="sv">Kontaktuppgifter</h2>
+                        <h2 lang="en">Contacts</h2>
+                    </div>
+
+                    <div id="valokuvia" class="menu-target">
+                        <h2 lang="fi">Valokuvia</h2>
+                        <h2 lang="sv">Bilder</h2>
+                        <h2 lang="en">Photos</h2>
+                    </div>
+
+
+
+
 
                 </div>
 
