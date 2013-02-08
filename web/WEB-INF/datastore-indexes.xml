@@ -35,8 +35,8 @@
     <datastore-index kind="RaceFleet" ancestor="true">
         <property name="EventDate" direction="asc" />
     </datastore-index>
-    <datastore-index kind="RaceStart" ancestor="true">
-        <property name="EventDate" direction="asc" />
+    <datastore-index kind="RaceFleet" ancestor="true" source="manual">
+        <property name="Ranking" direction="asc"/>
     </datastore-index>
     <datastore-index kind="RaceEntry" ancestor="false">
         <property name="Fee" direction="asc" />
@@ -47,5 +47,8 @@
     </datastore-index>
     <datastore-index kind="RaceEntry" ancestor="true" source="manual">
         <property name="SailNo" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="RaceSeries" ancestor="true" source="manual">
+        <property name="EventDate" direction="asc"/>
     </datastore-index>
 </datastore-indexes>
