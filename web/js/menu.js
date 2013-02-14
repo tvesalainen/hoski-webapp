@@ -15,28 +15,40 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 $(document).ready(function() {
 
     $(".menu-target").hide();
 
-    $(".default-menu").show();
+    if (!sessionStorage.lastMenu)
+    {
+        $(".default-menu").show();
+    }
+    else
+    {
+        show();
+    }
 
     $(".menu-item").click(function()
     {
-        var target = this;
-        $(".menu-target").each(function()
-        {
-            var id = $(this).attr("id");
-            if ($(target).hasClass(id))
-            {
-                $(this).show();
-            }
-            else
-            {
-                $(this).hide();
-            }
-        });
+        sessionStorage.lastMenu = this;
+        show();
     });
 
 });
+
+function show()
+{
+    $(".menu-target").each(function()
+    {
+        var target = sessionStorage.lastMenu; 
+        var id = $(this).attr("id");
+        if ($(target).hasClass(id))
+        {
+            $(this).show();
+        }
+        else
+        {
+            $(this).hide();
+        }
+    });
+}
