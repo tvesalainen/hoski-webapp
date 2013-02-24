@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="css/hr.css" />
     <meta name="hoskievents" content="/races/menu?menuKind=RaceFleet&amp;filter=Ranking$ne;true" />
     <meta name="hoskiweekly" content="/races/menu?menuKind=RaceFleet&amp;filter=Ranking$ne;false" />
-    <meta name="hoskiresults" content="/races/menu?menuKind=Attachment&amp;filter=Type$equals;2&amp;all=true" />
+    <meta name="hoskiresults" content="/races/menu?menuKind=Attachment&amp;filter=Type$equals;0" />
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/hoskievent.js"></script>                
         <script src="/js/lang.js"></script>
@@ -67,6 +67,7 @@
                         <h2 lang="fi">Kilpailukutsu</h2>
                         <h2 lang="sv">Tävlingsinbjudan</h2>
                         <h2 lang="en">Notice of Race</h2>
+                        <div id="hoskiresults" class="ajaxload events races">&nbsp;</div>
                     </div>
 
                     <div id="ilmoittautuminen" class="menu-target">
