@@ -31,10 +31,10 @@ input[readonly] { color: grey }
 table { width: 100%; margin: 0; padding: 0; }
 td, th { text-align: left; padding: 0 2px; vertical-align: top; border-bottom: 1px dashed grey}
 #navi { padding: 10px }
-#navi a { color: grey; }
+#navi a { color: black; }
 @media print { #navi { display: none; }}
 #container { width: 1000px; margin: 0 auto; padding: 0; }
-#column1 { float: left; width: 540px; padding: 10px; background: white; /* total width = 560px */ -moz-border-radius: 10px;
+#column1 { float: left; margin-left:60px; width: 540px; padding: 10px; background: white; /* total width = 560px */ -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
     border: 0px solid;}
@@ -55,7 +55,7 @@ td, th { text-align: left; padding: 0 2px; vertical-align: top; border-bottom: 1
 .columnWide { clear: both; padding: 10px }
 ul { list-style-type: none; margin: 0; padding: 0}
 ul.menu { list-style-type: square; padding: 0 20px; font-size: 140% }
-p.l1 { font-weight: bold; margin: 1.5em 0 1em }
+p.l1 { font-weight: bold; visibility:hidden; }
 p.l2 { margin: 0.5em 0; }
 .menu li { margin-bottom: 14px; }
 .races ul.l2 { padding-left: 40px; }

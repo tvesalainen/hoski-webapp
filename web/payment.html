@@ -35,9 +35,9 @@
           <h1>Maksuohjeet<small>Betalningsinstruktioner/Payment instructions</small></h1>
 
 	  <table id="entry">
-	    <tr><td>Kilpailu <small>Tävling/Race</small></td><td><strong><span hoski:keyinfo="RaceSeries.Event" class="ajaxload">&nbsp;</span> <span hoski:keyinfo="RaceSeries.FromTo">&nbsp;</span><span hoski:keyinfo="Year.Year">&nbsp;</span>, <span hoski:keyinfo="Fleet">&nbsp;</span></strong></td></tr>
-	    <tr><td>Kippari <small>Skeppare/Skipper</small></td><td><strong hoski:keyinfo="HelmName">&nbsp;</strong></td></tr>
-	    <tr><td>Purjenumero <small>Segel/Sail</small></td><td><strong><span hoski:keyinfo="Nat">&nbsp;</span>-<span hoski:keyinfo="SailNo">&nbsp;</span></strong></td></tr>
+	    <tr><td>Luokka <small>Klass/Class</small></td><td><strong><span hoski:keyinfo="RaceSeries.Event" class="ajaxload">&nbsp;</span> &nbsp;</span>, <span hoski:keyinfo="Fleet" class="ajaxload">&nbsp;</span></strong></td></tr>
+	    <tr><td>Kippari <small>Skeppare/Skipper</small></td><td><strong hoski:keyinfo="HelmName"  class="ajaxload">&nbsp;</strong></td></tr>
+	    <tr><td>Purjenumero <small>Segel/Sail</small></td><td><strong><span hoski:keyinfo="Nat" class="ajaxload">&nbsp;</span>-<span hoski:keyinfo="SailNo" class="ajaxload">&nbsp;</span></strong></td></tr>
 	  </table>
 
 	  <p>&nbsp;</p>
@@ -46,15 +46,15 @@
 	    <table id="paymentinstructions">
 	      <tr><td>Maksun saaja: <small>Mottagere/Payee</small></td><td><strong>Helsinki Regatta</strong></td></tr>
 	      <tr><td>BIC: <small>Bank Identifier Code</small></td><td><strong hoski:keyinfo="bic" class="ajaxload">&nbsp;</strong></td></tr>
-	      <tr><td>IBAN: <small>International Bank Account Number</small></td><td><strong hoski:keyinfo="iban">&nbsp;</strong></td></tr>
-	      <tr><td>Viitenumero: <small>Referens nummer/Reference number</small></td><td><strong hoski:keyinfo="rf">&nbsp;</strong></td></tr>
-              <tr><td>Eräpäivä: <small>Förfallodag/Due date</small></td><td><strong hoski:keyinfo="dueday">&nbsp;</strong></td></tr>
-	      <tr><td>Summa (EUR): <small>Summa/Sum</small></td><td><strong><span hoski:keyinfo="total">&nbsp;</span> &#x20AC;</strong> <span hoski:ifkeyinfo="isClubDiscountGranted" style="display:none">(sis. HSK-alennus)</span></td></tr>
+	      <tr><td>IBAN: <small>International Bank Account Number</small></td><td><strong hoski:keyinfo="iban" class="ajaxload">&nbsp;</strong></td></tr>
+	      <tr><td>Viitenumero: <small>Referens nummer/Reference number</small></td><td><strong hoski:keyinfo="rf" class="ajaxload">&nbsp;</strong></td></tr>
+              <tr><td>Eräpäivä: <small>Förfallodag/Due date</small></td><td><strong hoski:keyinfo="dueday" class="ajaxload">&nbsp;</strong></td></tr>
+	      <tr><td>Summa (EUR): <small>Summa/Sum</small></td><td><strong><span hoski:keyinfo="total" class="ajaxload">&nbsp;</span> &#x20AC;</strong> <span hoski:ifkeyinfo="isClubDiscountGranted" style="display:none">(sis. HSK-alennus)</span></td></tr>
             </table>
 	    
             <p>Voit maksaa osallistumismaksun myös käyttäen alla olevaa virtuaaliviivakoodia tai viivakoodia.</p>
             
-            <p><strong hoski:keyinfo="barcode5">&nbsp;</strong></p>
+            <p><strong hoski:keyinfo="barcode5" class="ajaxload">&nbsp;</strong></p>
 	    
             <div>
               <canvas id="barcode" hoski:keyinfo="bars" height="100" width="500"></canvas>
