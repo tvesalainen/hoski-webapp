@@ -15,6 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 $(function() {
+    
+  $(".load").each(function(i, tag)
+  {
+    $(this).load($(this).attr("title"), function() {
+      $(this).removeClass("ajaxload");
+      $(this).removeAttr("title");
+    });
+  });
+    
   var hoskievents = $("#hoskievents");
   var hoskieventservice = $("meta[name='hoskievents']").attr("content");
 

@@ -139,6 +139,10 @@
         <servlet-name>CustomCSSServlet</servlet-name>
         <servlet-class>fi.hoski.web.forms.CustomCSSServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MessagesServlet</servlet-name>
+        <servlet-class>fi.hoski.web.forms.MessagesServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RemoteApiServlet</servlet-name>
         <url-pattern>/remote_api</url-pattern>
@@ -209,6 +213,10 @@
     <servlet-mapping>
         <servlet-name>AdminEntityListServlet</servlet-name>
         <url-pattern>/races/admin/list</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MessagesServlet</servlet-name>
+        <url-pattern>/msg</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
