@@ -57,6 +57,7 @@ ul { list-style-type: none; margin: 0; padding: 0}
 ul.menu { list-style-type: square; padding: 0 20px; font-size: 140% }
 p.l1 { font-weight: bold; visibility:hidden; }
 p.l2 { margin: 0.5em 0; }
+div.showyear * p.l1 { visibility:visible; }
 .menu li { margin-bottom: 14px; }
 .races ul.l2 { padding-left: 40px; }
 .events a { text-decoration: none }

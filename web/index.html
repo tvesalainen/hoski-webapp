@@ -24,9 +24,9 @@
                 <div id="logo">
                     <img src="img/hr-logo.png">
                 </div>
-                <div id="otsikko" class="load ajaxload" title="/msg?key=RaceBIC">
+                <div id="otsikko" >
                     Helsinki Regatta<br>
-                    29.-30.6.2013   
+                    <span class="load ajaxload" title="/msg?key=Text0">&nbsp;</span>   
                 </div>
             </div>
 
@@ -58,9 +58,12 @@
                 <div id="text">
 
                     <div id="etusivu" class="menu-target default-menu">
-                        <p lang="fi">Tervetuloa!</p>
-                        <p lang="sv">Välkommen</p>
-                        <p lang="en">Welcome!</p>
+                        <h2 lang="fi">Tervetuloa!</h2>
+                        <span lang="fi" class="load ajaxload" title="/msg?key=Text4">&nbsp;</span>                        
+                        <h2 lang="sv">Välkommen</h2>
+                        <span lang="sv" class="load ajaxload" title="/msg?key=Text5">&nbsp;</span>                        
+                        <h2 lang="en">Welcome!</h2>
+                        <span lang="en" class="load ajaxload" title="/msg?key=Text6">&nbsp;</span>                        
                     </div>
 
                     <div id="kilpailukutsu" class="menu-target">
@@ -84,24 +87,27 @@
                         <div class="load ajaxload events races" title="/races/menu?menuKind=Attachment&amp;filter=Type$equals;1">&nbsp;</div>
                     </div>
 
-                    <div id="tulokset" class="menu-target">
+                    <div id="tulokset" class="menu-target showyear">
                         <h2 lang="fi">Tulokset</h2>
                         <h2 lang="sv">Resultat</h2>
                         <h2 lang="en">Results</h2>
-                        <div class="load ajaxload events races" title="/races/menu?menuKind=Attachment&amp;filter=Type$equals;2">&nbsp;</div>
+                        <div class="load ajaxload events races" title="/races/menu?menuKind=Attachment&amp;filter=Type$equals;2&amp;all=true">&nbsp;</div>
                     </div>
 
                     <div id="yhteystiedot" class="menu-target">
                         <h2 lang="fi">Yhteystiedot</h2>
+                        <span lang="fi" class="load ajaxload" title="/msg?key=Text1">&nbsp;</span>
                         <h2 lang="sv">Kontaktuppgifter</h2>
+                        <span lang="sv" class="load ajaxload" title="/msg?key=Text2">&nbsp;</span>
                         <h2 lang="en">Contacts</h2>
+                        <span lang="en" class="load ajaxload" title="/msg?key=Text3">&nbsp;</span>
                     </div>
 
-                    <div id="valokuvia" class="menu-target">
+                    <div id="valokuvia" class="menu-target showyear">
                         <h2 lang="fi">Valokuvia</h2>
                         <h2 lang="sv">Bilder</h2>
                         <h2 lang="en">Photos</h2>
-                        <div class="load ajaxload events races" title="/races/menu?menuKind=Attachment&amp;filter=Type$equals;4">&nbsp;</div>
+                        <div class="load ajaxload events races" title="/races/menu?menuKind=Attachment&amp;filter=Type$equals;4&amp;all=true">&nbsp;</div>
                     </div>
 
 
