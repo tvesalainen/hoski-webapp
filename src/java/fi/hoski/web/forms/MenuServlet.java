@@ -40,6 +40,8 @@ public class MenuServlet extends HttpServlet {
   public static final String MENUKIND = "menuKind";
   public static final String PROPERTIES = "properties";
   public static final String FILTER = "filter";
+  public static final String ALL = "all";
+  public static final String REV = "rev";
   private ResourceBundle repositoryBundle;
   private DatastoreService datastore;
   private DSUtils entities;
@@ -84,14 +86,15 @@ public class MenuServlet extends HttpServlet {
   }
 
   private void printMenu(PrintWriter out, ParameterContext c, boolean authenticated) throws EntityNotFoundException, ServletException {
-    NavigableMap<Key, NavigableMap> root = new TreeMap<Key, NavigableMap>();
-    Deque<Key> stack = new ArrayDeque<Key>();
+    NavigableMap<Key, NavigableMap> root = new TreeMap<>();
+    Deque<Key> stack = new ArrayDeque<>();
     String kind = c.getParameter(MENUKIND);
     if (kind == null) {
       throw new ServletException(MENUKIND + " not set");
     }
+    boolean rev = c.getBooleanParameter(REV);
     Query query = new Query(kind);
-    boolean all = c.getBooleanParameter("all");
+    boolean all = c.getBooleanParameter(ALL);
     if (!all) {
       Key yearKey = entities.getYearKey();
       query.setAncestor(yearKey);
@@ -130,15 +133,15 @@ public class MenuServlet extends HttpServlet {
       root = entry.getValue();
       depth--;
     }
-    printTree(out, root, c, kind, 1, authenticated);
+    printTree(out, root, c, kind, 1, authenticated, rev);
   }
 
-  private void printTree(PrintWriter out, NavigableMap<Key, NavigableMap> t, ParameterContext c, String kind, int level, boolean authenticated) throws EntityNotFoundException {
+  private void printTree(PrintWriter out, NavigableMap<Key, NavigableMap> t, ParameterContext c, String kind, int level, boolean authenticated, boolean rev) throws EntityNotFoundException {
     if (!t.isEmpty()) {
       out.println("<ul class=\"l" + level + "\">");
-      for (Key key : t.navigableKeySet()) {
+      for (Key key : rev ? t.descendingKeySet() : t.navigableKeySet()) {
         out.println("<li><p class=\"l" + level + "\">" + keyToString(key, c, kind, authenticated) + "</p>");
-        printTree(out, t.get(key), c, kind, level + 1, authenticated);
+        printTree(out, t.get(key), c, kind, level + 1, authenticated, rev);
         out.println("</li>");
       }
       out.println("</ul>");
