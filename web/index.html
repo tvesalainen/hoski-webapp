@@ -5,13 +5,9 @@
         <title>Helsinki Regatta</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
                 <link rel="stylesheet" type="text/css" href="css/hoski.css" />
-
         <link rel="stylesheet" type="text/css" href="css/hr.css" />
-    <meta name="hoskievents" content="/races/menu?menuKind=RaceFleet&amp;filter=Ranking$ne;true" />
-    <meta name="hoskiweekly" content="/races/menu?menuKind=RaceFleet&amp;filter=Ranking$ne;false" />
-    <meta name="hoskiresults" content="/races/menu?menuKind=Attachment&amp;filter=Type$equals;0" />
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/hoskievent.js"></script>                
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/hoskievent.js"></script>                
         <script src="/js/lang.js"></script>
         <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
         <script src="/js/menu.js"></script>
@@ -70,28 +66,28 @@
                         <h2 lang="fi">Kilpailukutsu</h2>
                         <h2 lang="sv">Tävlingsinbjudan</h2>
                         <h2 lang="en">Notice of Race</h2>
-                        <div class="load ajaxload events races" title="/races/menu?menuKind=Attachment&amp;filter=Type$equals;0">&nbsp;</div>
+                        <div class="load ajaxload events races" title="/races/menu?menuKind=Attachment&filter=Type$equals;0">&nbsp;</div>
                     </div>
 
                     <div id="ilmoittautuminen" class="menu-target">
                         <h2 lang="fi">Ilmoittautuminen</h2>
                         <h2 lang="sv">Anmälan</h2>
                         <h2 lang="en">Entry</h2>
-                        <div id="hoskievents" class="ajaxload events races">&nbsp;</div>
+                        <div class="load ajaxload events races" title="/races/menu?menuKind=RaceFleet&amp;filter=Ranking$ne;true">&nbsp;</div>
                     </div>
 
                     <div id="purjehdusohjeet" class="menu-target">
                         <h2 lang="fi">Purjehdusohjeet</h2>
                         <h2 lang="sv">Seglingsföreskrifter</h2>
                         <h2 lang="en">Sailing instructions</h2>                        
-                        <div class="load ajaxload events races" title="/races/menu?menuKind=Attachment&amp;filter=Type$equals;1">&nbsp;</div>
+                        <div class="load ajaxload events races" title="/races/menu?menuKind=Attachment&filter=Type$equals;1">&nbsp;</div>
                     </div>
 
                     <div id="tulokset" class="menu-target showyear">
                         <h2 lang="fi">Tulokset</h2>
                         <h2 lang="sv">Resultat</h2>
                         <h2 lang="en">Results</h2>
-                        <div class="load ajaxload events races" title="/races/menu?menuKind=Attachment&amp;filter=Type$equals;2&amp;all=true">&nbsp;</div>
+                        <div class="load ajaxload events races" title="/races/menu?menuKind=Attachment&filter=Type$equals;2&all=true&rev=true">&nbsp;</div>
                     </div>
 
                     <div id="yhteystiedot" class="menu-target">
@@ -107,7 +103,7 @@
                         <h2 lang="fi">Valokuvia</h2>
                         <h2 lang="sv">Bilder</h2>
                         <h2 lang="en">Photos</h2>
-                        <div class="load ajaxload events races" title="/races/menu?menuKind=Attachment&amp;filter=Type$equals;4&amp;all=true">&nbsp;</div>
+                        <div class="load ajaxload events races" title="/races/menu?menuKind=Attachment&filter=Type$equals;4&all=true&rev=true">&nbsp;</div>
                     </div>
 
 
