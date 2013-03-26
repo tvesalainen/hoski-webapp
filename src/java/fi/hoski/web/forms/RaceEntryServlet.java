@@ -13,7 +13,7 @@
  *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 package fi.hoski.web.forms;
 
 import com.google.appengine.api.datastore.*;
@@ -52,7 +52,6 @@ public class RaceEntryServlet extends HttpServlet {
   private static final String CLASSOPTIONS = "ClassOptions";
   private static final String COOKIENAME = "fi.hoski.RaceEntry";
   private ResourceBundle repositoryBundle;
-  private ResourceBundle messagesBundle;
   private DatastoreService datastore;
   private DSUtils entities;
   private Races races;
@@ -64,7 +63,6 @@ public class RaceEntryServlet extends HttpServlet {
     super.init(config);
 
     repositoryBundle = ResourceBundle.getBundle("fi/hoski/datastore/repository/fields");
-    messagesBundle = ResourceBundle.getBundle(Messages.NAME);
     datastore = DatastoreServiceFactory.getDatastoreService();
     entities = new DSUtilsImpl(datastore);
     mailService = new MailServiceImpl();
@@ -166,12 +164,7 @@ public class RaceEntryServlet extends HttpServlet {
   }
 
   private String msg(String key) {
-    try {
-      return messagesBundle.getString(key);
-    } catch (MissingResourceException ex) {
-      log(ex.getMessage());
-      return null;
-    }
+    return entities.getMessage(key);
   }
 
   /**
@@ -214,25 +207,20 @@ public class RaceEntryServlet extends HttpServlet {
         raceEntry.set(RaceEntry.HELMADDRESS, sa + ", " + zc + " " + ct + ", " + cn);
       }
 
-      
+
       Day closingDay = (Day) raceSeries.get(RaceSeries.CLOSINGDATE);
       Number fee = 0.0;
-      if (closingDay != null)
-      {
+      if (closingDay != null) {
         Day now = new Day();
-        if (closingDay.before(now))
-        {
+        if (closingDay.before(now)) {
           fee = (Number) raceFleet.get(RaceFleet.FEE2);
-        }
-        else
-        {
+        } else {
           fee = (Number) raceFleet.get(RaceFleet.FEE);
         }
       }
       Boolean clubDiscount = (Boolean) raceSeries.get(RaceSeries.CLUBDISCOUNT);
       String clubname = repositoryBundle.getString("Clubname");
-      if (clubDiscount != null && clubDiscount && clubname.equalsIgnoreCase(""+raceEntry.get(RaceEntry.CLUB)))
-      {
+      if (clubDiscount != null && clubDiscount && clubname.equalsIgnoreCase("" + raceEntry.get(RaceEntry.CLUB))) {
         fee = new Double(0);
       }
       raceEntry.set(RaceEntry.FEE, fee);
