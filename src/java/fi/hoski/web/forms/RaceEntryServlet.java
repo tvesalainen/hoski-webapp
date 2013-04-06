@@ -234,12 +234,14 @@ public class RaceEntryServlet extends HttpServlet {
       if (bb != null) {
         Day dueDay = new Day(bb.getDueDate());
         String payingFormat = EntityReferences.encode(msg(Messages.RACEENTRYPAYING), "UTF-8");
+        String bic = EntityReferences.encode(msg(Messages.RACEBIC), "UTF-8");
         payingInstructions = String.format(payingFormat,
           bb.toString(), // 1 = barcode
           bb.getAccount().getIBAN(), // 2 = account
           bb.getReference().toFormattedRFString(), // 3 = ref
           dueDay, // 4 = due date
-          String.format("%.2f", bb.getTotal()) // 5 = total
+          String.format("%.2f", bb.getTotal()), // 5 = total
+          bic // 6 = bic
           );
         payingInstructionsHtml = String.format(payingFormat.replace("\n", "<br>"),
           "<span id='barcode'>" + bb.toString() + "</span>", // 1 = barcode
