@@ -248,7 +248,8 @@ public class RaceEntryServlet extends HttpServlet {
           "<span id='iban'>" + bb.getAccount().getIBAN() + "</span>", // 2 = account
           "<span id='rf'>" + bb.getReference().toFormattedRFString() + "</span>", // 3 = ref
           "<span id='due'>" + dueDay + "</span>", // 4 = due date
-          "<span id='fee'>" + String.format("%.2f", bb.getTotal()) + "</span>" // 5 = total
+          "<span id='fee'>" + String.format("%.2f", bb.getTotal()) + "</span>", // 5 = total
+          "<span id='bic'>" + bic + "</span>" // 6 = bic
           );
       }
       URL base = new URL(request.getRequestURL().toString());
