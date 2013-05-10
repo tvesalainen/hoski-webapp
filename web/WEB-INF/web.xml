@@ -106,6 +106,12 @@
     <servlet>
         <servlet-name>RaceEntryServlet</servlet-name>
         <servlet-class>fi.hoski.web.forms.RaceEntryServlet</servlet-class>
+        <init-param>
+            <description>If set true: Previously stored fields are used as 
+default values in race entry</description>
+            <param-name>use-cookies</param-name>
+            <param-value>false</param-value>
+        </init-param>
     </servlet>
     <servlet>
         <servlet-name>KeyInfoServlet</servlet-name>
