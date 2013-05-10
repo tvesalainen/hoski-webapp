@@ -73,8 +73,9 @@ public class RaceEntryServlet extends HttpServlet {
     boatInfoFactory.setURL("LYS", msg(Messages.LYSINFOURL), msg(Messages.LYSCLASSINFOURL));
     boatInfoFactory.setURL("IRC", msg(Messages.IRCINFOURL), null);
     boatInfoFactory.setURL("ORC", msg(Messages.ORCINFOURL), null);
-
-    useCookies = Boolean.parseBoolean(config.getInitParameter("use-cookies"));
+    String uc = config.getInitParameter("use-cookies");
+    useCookies = Boolean.parseBoolean(uc);
+    log("useCookies="+useCookies+" // "+uc);
   }
 
   /**
