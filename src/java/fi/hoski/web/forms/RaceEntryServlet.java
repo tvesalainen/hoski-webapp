@@ -57,6 +57,7 @@ public class RaceEntryServlet extends HttpServlet {
   private Races races;
   private MailService mailService;
   private BoatInfoFactory boatInfoFactory;
+  private boolean useCookies;
 
   @Override
   public void init(ServletConfig config) throws ServletException {
@@ -73,6 +74,7 @@ public class RaceEntryServlet extends HttpServlet {
     boatInfoFactory.setURL("IRC", msg(Messages.IRCINFOURL), null);
     boatInfoFactory.setURL("ORC", msg(Messages.ORCINFOURL), null);
 
+    useCookies = Boolean.parseBoolean(config.getInitParameter("use-cookies"));
   }
 
   /**
@@ -280,7 +282,10 @@ public class RaceEntryServlet extends HttpServlet {
         }
       }
       Cookie cookie = null;
-      Cookie[] cookies = request.getCookies();
+      Cookie[] cookies = null;
+      if (useCookies) {
+        cookies = request.getCookies();
+      }
       if (cookies != null) {
         for (Cookie ck : cookies) {
           if (COOKIENAME.equals(ck.getName())) {
@@ -289,7 +294,7 @@ public class RaceEntryServlet extends HttpServlet {
         }
       }
       JSONObject json = null;
-      if (cookie != null) {
+      if (useCookies && cookie != null) {
         Base64 decoder = new Base64();
         String str = new String(decoder.decode(cookie.getValue()));
         json = new JSONObject(str);
@@ -305,14 +310,16 @@ public class RaceEntryServlet extends HttpServlet {
       }
       Base64 encoder = new Base64();
       String base64 = encoder.encodeAsString(json.toString().getBytes("UTF-8"));
-      if (cookie == null) {
-        cookie = new Cookie(COOKIENAME, base64);
-        cookie.setPath("/");
-        cookie.setMaxAge(400 * 24 * 60 * 60);
-      } else {
-        cookie.setValue(base64);
+      if (useCookies) {
+        if (cookie == null) {
+          cookie = new Cookie(COOKIENAME, base64);
+          cookie.setPath("/");
+          cookie.setMaxAge(400 * 24 * 60 * 60);
+        } else {
+          cookie.setValue(base64);
+        }
+        response.addCookie(cookie);
       }
-      response.addCookie(cookie);
       sendError(response, HttpServletResponse.SC_OK,
         "<div id=\"" + raceEntry.createKeyString() + "\">Ok</div>");
     } catch (JSONException ex) {
@@ -349,16 +356,18 @@ public class RaceEntryServlet extends HttpServlet {
   }
 
   private JSONObject fromCookie(HttpServletRequest request) throws JSONException {
-    Cookie[] cookies = request.getCookies();
-    if (cookies != null) {
-      for (Cookie cookie : cookies) {
-        if (COOKIENAME.equals(cookie.getName())) {
-          Base64 decoder = new Base64();
-          try {
-            return new JSONObject(new String(decoder.decode(cookie.getValue()), "UTF-8"));
-          } catch (UnsupportedEncodingException ex) {
-            log(ex.getMessage(), ex);
-            return new JSONObject();
+    if (useCookies) {
+      Cookie[] cookies = request.getCookies();
+      if (cookies != null) {
+        for (Cookie cookie : cookies) {
+          if (COOKIENAME.equals(cookie.getName())) {
+            Base64 decoder = new Base64();
+            try {
+              return new JSONObject(new String(decoder.decode(cookie.getValue()), "UTF-8"));
+            } catch (UnsupportedEncodingException ex) {
+              log(ex.getMessage(), ex);
+              return new JSONObject();
+            }
           }
         }
       }
