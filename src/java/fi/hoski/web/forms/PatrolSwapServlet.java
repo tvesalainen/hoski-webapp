@@ -20,6 +20,7 @@ import com.google.appengine.api.datastore.EntityNotFoundException;
 import fi.hoski.datastore.PatrolShifts;
 import fi.hoski.datastore.PatrolShiftsImpl;
 import fi.hoski.datastore.Repository;
+import fi.hoski.datastore.SMSNotConfiguredException;
 import fi.hoski.datastore.repository.Options;
 import fi.hoski.datastore.repository.SwapRequest;
 import fi.hoski.sms.SMSException;
@@ -61,7 +62,7 @@ public class PatrolSwapServlet extends HttpServlet {
       }
       repositoryBundle = ResourceBundle.getBundle("fi/hoski/datastore/repository/fields");
       patrolShifts = new PatrolShiftsImpl(new ServletLog(this), margin);
-    } catch (EntityNotFoundException ex) {
+    } catch (SMSNotConfiguredException | EntityNotFoundException ex) {
       throw new ServletException(ex);
     }
   }
