@@ -200,7 +200,7 @@ public class EventServlet extends HttpServlet {
         e.put("reservations", event.getChildCount());
         e.put("isFull", event.isFull());
         e.put("key", event.createKeyString());
-        Day d = (Day) event.get(Event.EVENTDATE);
+        Day d = (Day) event.get(Event.EventDate);
         e.put("eventDate", d.getDate().getTime());
         e.put("eventName", d);
         jsonEvents.put(e);

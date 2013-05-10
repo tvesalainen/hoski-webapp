@@ -19,6 +19,7 @@ package fi.hoski.web.forms;
 import com.google.appengine.api.datastore.EntityNotFoundException;
 import fi.hoski.datastore.PatrolShifts;
 import fi.hoski.datastore.PatrolShiftsImpl;
+import fi.hoski.datastore.SMSNotConfiguredException;
 import fi.hoski.web.ServletLog;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -49,7 +50,7 @@ public class CronServlet extends HttpServlet {
         margin = Integer.parseInt(marginString);
       }
       patrolShifts = new PatrolShiftsImpl(new ServletLog(this), margin);
-    } catch (EntityNotFoundException ex) {
+    } catch (SMSNotConfiguredException | EntityNotFoundException ex) {
       throw new ServletException(ex);
     }
   }

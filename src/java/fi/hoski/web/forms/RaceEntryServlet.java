@@ -90,7 +90,7 @@ public class RaceEntryServlet extends HttpServlet {
     try {
       response.setHeader("Cache-Control", "private");
       JSONObject json = null;
-      String ratingSystem = request.getParameter(RaceFleet.RATINGSYSTEM);
+      String ratingSystem = request.getParameter(RaceFleet.RatingSystem);
       if (ratingSystem != null) {
         String classOptions = request.getParameter(CLASSOPTIONS);
         if (classOptions != null) {
@@ -109,8 +109,8 @@ public class RaceEntryServlet extends HttpServlet {
         json = fromCookie(request);
         Entity rcEntity = getAncestor(request);
         if (rcEntity != null) {
-          json.put(RaceEntry.FLEET, rcEntity.getProperty(RaceFleet.FLEET));
-          String boatClass = (String) rcEntity.getProperty(RaceFleet.CLASS);
+          json.put(RaceEntry.FLEET, rcEntity.getProperty(RaceFleet.Fleet));
+          String boatClass = (String) rcEntity.getProperty(RaceFleet.Class);
           if (boatClass != null) {
             json.put(RaceEntry.CLASS, boatClass);
           }
@@ -208,14 +208,14 @@ public class RaceEntryServlet extends HttpServlet {
       }
 
 
-      Day closingDay = (Day) raceSeries.get(RaceSeries.CLOSINGDATE);
+      Day closingDay = (Day) raceSeries.get(RaceSeries.ClosingDate);
       Number fee = 0.0;
       if (closingDay != null) {
         Day now = new Day();
         if (closingDay.before(now)) {
-          fee = (Number) raceFleet.get(RaceFleet.FEE2);
+          fee = (Number) raceFleet.get(RaceFleet.Fee2);
         } else {
-          fee = (Number) raceFleet.get(RaceFleet.FEE);
+          fee = (Number) raceFleet.get(RaceFleet.Fee);
         }
       }
       Boolean clubDiscount = (Boolean) raceSeries.get(RaceSeries.CLUBDISCOUNT);

@@ -83,7 +83,7 @@ public class InspectionOptServlet extends HttpServlet {
           }
           Entity eventEntity = datastore.get(parent);
           Event event = (Event) entities.newInstance(eventEntity);
-          Day day = (Day) event.get(Event.EVENTDATE);
+          Day day = (Day) event.get(Event.EventDate);
           List<Event> inspectionEvents = events.getEvents(Event.EventType.INSPECTION, day, 3);
           boolean selected = true;
           for (Event inspectionEvent : inspectionEvents) {
