@@ -108,6 +108,7 @@ public class UploadServlet extends HttpServlet {
           } else {
             attachment.set(Attachment.TITLE, filename);
           }
+          attachment.set(Attachment.Filename, filename);
           entities.put(attachment);
         }
       }
