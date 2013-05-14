@@ -66,7 +66,7 @@ public class CleanupServlet extends HttpServlet {
           query.setKeysOnly();
           PreparedQuery p2 = datastore.prepare(query);
           for (Entity e : p2.asIterable(FetchOptions.Builder.withChunkSize(500))) {
-            if (!"Attachment".equals(e.getKind())) {
+            if (!"Year".equals(e.getKind()) && !"Attachment".equals(e.getKind())) {
               log("removing " + e);
               //datastore.delete(e.getKey());
             }
