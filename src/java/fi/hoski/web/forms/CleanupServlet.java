@@ -68,7 +68,7 @@ public class CleanupServlet extends HttpServlet {
           for (Entity e : p2.asIterable(FetchOptions.Builder.withChunkSize(500))) {
             if (!"Year".equals(e.getKind()) && !"Attachment".equals(e.getKind())) {
               log("removing " + e);
-              //datastore.delete(e.getKey());
+              datastore.delete(e.getKey());
             }
           }
         }
