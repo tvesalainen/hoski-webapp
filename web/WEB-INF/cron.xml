@@ -22,4 +22,10 @@
     <schedule>every day 04:00</schedule>
     <timezone>Europe/Helsinki</timezone>
   </cron>
+  <cron>
+    <url>/cleanup</url>
+    <description>Cleaup previous years</description>
+    <schedule>every day 14:30</schedule>
+    <timezone>Europe/Helsinki</timezone>
+  </cron>
 </cronentries>
