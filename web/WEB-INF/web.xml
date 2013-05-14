@@ -149,6 +149,10 @@ default values in race entry</description>
         <servlet-name>MessagesServlet</servlet-name>
         <servlet-class>fi.hoski.web.forms.MessagesServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CleanupServlet</servlet-name>
+        <servlet-class>fi.hoski.web.forms.CleanupServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RemoteApiServlet</servlet-name>
         <url-pattern>/remote_api</url-pattern>
@@ -223,6 +227,10 @@ default values in race entry</description>
     <servlet-mapping>
         <servlet-name>MessagesServlet</servlet-name>
         <url-pattern>/msg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CleanupServlet</servlet-name>
+        <url-pattern>/cleanup</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

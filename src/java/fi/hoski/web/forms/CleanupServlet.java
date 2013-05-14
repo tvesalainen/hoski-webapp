@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 Helsingfors Segelklubb ry
+ * Copyright (C) 2013 Helsingfors Segelklubb ry
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -13,17 +13,20 @@
  *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 package fi.hoski.web.forms;
 
-import com.google.appengine.api.datastore.EntityNotFoundException;
-import fi.hoski.datastore.PatrolShifts;
-import fi.hoski.datastore.PatrolShiftsImpl;
-import fi.hoski.datastore.SMSNotConfiguredException;
-import fi.hoski.web.ServletLog;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.FetchOptions;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Transaction;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletConfig;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,24 +36,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Timo Vesalainen
  */
-public class CronServlet extends HttpServlet {
-
-  private PatrolShifts patrolShifts;
-  private int margin = 5;
-
-  @Override
-  public void init(ServletConfig config) throws ServletException {
-    try {
-      super.init(config);
-      String marginString = config.getInitParameter("dayMargin");
-      if (marginString != null) {
-        margin = Integer.parseInt(marginString);
-      }
-      patrolShifts = new PatrolShiftsImpl(new ServletLog(this), margin);
-    } catch (SMSNotConfiguredException | EntityNotFoundException ex) {
-      throw new ServletException(ex);
-    }
-  }
+public class CleanupServlet extends HttpServlet {
 
   /**
    * Processes requests for both HTTP
@@ -64,21 +50,49 @@ public class CronServlet extends HttpServlet {
    */
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+    log("Starting cleanup");
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    Calendar cal = Calendar.getInstance();
+    long thisYear = cal.get(Calendar.YEAR);
+    Transaction tr = datastore.beginTransaction();
+    try {
+      Query yearQuery = new Query("Year");
+      PreparedQuery p1 = datastore.prepare(yearQuery);
+      for (Entity year : p1.asIterable()) {
+        Key key = year.getKey();
+        if (key.getId() < thisYear) {
+          Query query = new Query();
+          query.setAncestor(key);
+          query.setKeysOnly();
+          PreparedQuery p2 = datastore.prepare(query);
+          for (Entity e : p2.asIterable(FetchOptions.Builder.withChunkSize(500))) {
+            if (!"Attachment".equals(e.getKind())) {
+              log("removing " + e);
+              //datastore.delete(e.getKey());
+            }
+          }
+        }
+      }
+      tr.commit();
+      log("Cleanup ready");
+    } finally {
+      if (tr.isActive()) {
+        tr.rollback();
+        log("rollbacked");
+      }
+    }
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
     try {
-      patrolShifts.handleExpiredRequests(margin);
       out.println("<html>");
       out.println("<head>");
-      out.println("<title>Servlet CronServlet</title>");      
+      out.println("<title>Servlet CleanupServlet</title>");
       out.println("</head>");
       out.println("<body>");
-      out.println("<h1>Servlet CronServlet at " + request.getContextPath() + "</h1>");
+      out.println("<h1>Servlet CleanupServlet at " + request.getContextPath() + "</h1>");
       out.println("</body>");
       out.println("</html>");
-    } catch (EntityNotFoundException ex) {
-      throw new ServletException(ex);
-    } finally {      
+    } finally {
       out.close();
     }
   }
