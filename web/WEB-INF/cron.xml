@@ -25,7 +25,7 @@
   <cron>
     <url>/cleanup</url>
     <description>Cleaup previous years</description>
-    <schedule>every day 14:30</schedule>
+    <schedule>1st day of jan 17:00</schedule>
     <timezone>Europe/Helsinki</timezone>
   </cron>
 </cronentries>
