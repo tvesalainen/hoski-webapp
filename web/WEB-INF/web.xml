@@ -268,6 +268,18 @@ default values in race entry</description>
             <role-name>admin</role-name>
         </auth-constraint>
     </security-constraint>
+    <security-constraint>
+        <display-name>Cleanup</display-name>
+        <web-resource-collection>
+            <web-resource-name>Cleanup</web-resource-name>
+            <description/>
+            <url-pattern>/cleanup</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
     <security-role>
         <description/>
         <role-name>admin</role-name>
