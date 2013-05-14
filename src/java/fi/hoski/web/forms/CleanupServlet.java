@@ -50,37 +50,6 @@ public class CleanupServlet extends HttpServlet {
    */
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-    log("Starting cleanup");
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    Calendar cal = Calendar.getInstance();
-    long thisYear = cal.get(Calendar.YEAR);
-    Transaction tr = datastore.beginTransaction();
-    try {
-      Query yearQuery = new Query("Year");
-      PreparedQuery p1 = datastore.prepare(yearQuery);
-      for (Entity year : p1.asIterable()) {
-        Key key = year.getKey();
-        if (key.getId() < thisYear) {
-          Query query = new Query();
-          query.setAncestor(key);
-          query.setKeysOnly();
-          PreparedQuery p2 = datastore.prepare(query);
-          for (Entity e : p2.asIterable(FetchOptions.Builder.withChunkSize(500))) {
-            if (!"Year".equals(e.getKind()) && !"Attachment".equals(e.getKind())) {
-              log("removing " + e);
-              datastore.delete(e.getKey());
-            }
-          }
-        }
-      }
-      tr.commit();
-      log("Cleanup ready");
-    } finally {
-      if (tr.isActive()) {
-        tr.rollback();
-        log("rollbacked");
-      }
-    }
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
     try {
@@ -90,6 +59,38 @@ public class CleanupServlet extends HttpServlet {
       out.println("</head>");
       out.println("<body>");
       out.println("<h1>Servlet CleanupServlet at " + request.getContextPath() + "</h1>");
+      log("Starting cleanup");
+      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+      Calendar cal = Calendar.getInstance();
+      long thisYear = cal.get(Calendar.YEAR);
+      Transaction tr = datastore.beginTransaction();
+      try {
+        Query yearQuery = new Query("Year");
+        PreparedQuery p1 = datastore.prepare(yearQuery);
+        for (Entity year : p1.asIterable()) {
+          Key key = year.getKey();
+          if (key.getId() < thisYear) {
+            Query query = new Query();
+            query.setAncestor(key);
+            query.setKeysOnly();
+            PreparedQuery p2 = datastore.prepare(query);
+            for (Entity e : p2.asIterable(FetchOptions.Builder.withChunkSize(500))) {
+              if (!"Year".equals(e.getKind()) && !"Attachment".equals(e.getKind())) {
+                log("removing " + e);
+                out.println("removing " + e+"<nbsp>");
+                datastore.delete(e.getKey());
+              }
+            }
+          }
+        }
+        tr.commit();
+        log("Cleanup ready");
+      } finally {
+        if (tr.isActive()) {
+          tr.rollback();
+          log("rollbacked");
+        }
+      }
       out.println("</body>");
       out.println("</html>");
     } finally {
