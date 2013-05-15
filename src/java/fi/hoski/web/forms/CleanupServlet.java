@@ -16,17 +16,25 @@
  */
 package fi.hoski.web.forms;
 
+import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobstoreService;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.Link;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Transaction;
+import fi.hoski.datastore.repository.Attachment;
+import fi.hoski.datastore.repository.Attachment.Type;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -61,23 +69,60 @@ public class CleanupServlet extends HttpServlet {
       out.println("<h1>Servlet CleanupServlet at " + request.getContextPath() + "</h1>");
       log("Starting cleanup");
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+      BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
       Calendar cal = Calendar.getInstance();
       long thisYear = cal.get(Calendar.YEAR);
+      Set<Key> preservedKeys = new HashSet<>();
       Transaction tr = datastore.beginTransaction();
       try {
         Query yearQuery = new Query("Year");
         PreparedQuery p1 = datastore.prepare(yearQuery);
         for (Entity year : p1.asIterable()) {
-          Key key = year.getKey();
-          if (key.getId() < thisYear) {
+          Key yearKey = year.getKey();
+          if (yearKey.getId() < thisYear) {
+            Query attachmentQuery = new Query("Attachment");
+            attachmentQuery.setAncestor(yearKey);
+            PreparedQuery p2 = datastore.prepare(attachmentQuery);
+            for (Entity attachment : p2.asIterable(FetchOptions.Builder.withChunkSize(500))) {
+              Long typeOrdinal = (Long) attachment.getProperty(Attachment.TYPE);
+              if (typeOrdinal == null) {
+                log(attachment + " has null type!!!");
+              } else {
+                Type type = Type.values()[typeOrdinal.intValue()];
+                switch (type) {
+                  case PICS:
+                  case RESULT:
+                    Key key = attachment.getKey();
+                    while (key != null) {
+                      preservedKeys.add(key);
+                      key = key.getParent();
+                    }
+                    break;
+                  default:
+                    Link link = (Link) attachment.getProperty(Attachment.URL);
+                    String url = link.getValue();
+                    int idx = url.indexOf("blob-key=");
+                    String bks = url.substring(idx+9);
+                    BlobKey bk = new BlobKey(bks);
+                    blobstoreService.delete(bk);
+                    log("removing " + bk);
+                    out.println("<p>removing " + bk);
+                    break;
+                }
+              }
+            }
+            for (Key k : preservedKeys)
+            {
+              out.println("<p>preserving "+k);
+            }
             Query query = new Query();
-            query.setAncestor(key);
+            query.setAncestor(yearKey);
             query.setKeysOnly();
-            PreparedQuery p2 = datastore.prepare(query);
-            for (Entity e : p2.asIterable(FetchOptions.Builder.withChunkSize(500))) {
-              if (!"Year".equals(e.getKind()) && !"Attachment".equals(e.getKind())) {
-                log("removing " + e);
-                out.println("removing " + e+"<nbsp>");
+            PreparedQuery p3 = datastore.prepare(query);
+            for (Entity e : p3.asIterable(FetchOptions.Builder.withChunkSize(500))) {
+              if (!preservedKeys.contains(e.getKey())) {
+                log("removing " + e.getKey());
+                out.println("<p>removing " + e.getKey());
                 datastore.delete(e.getKey());
               }
             }
