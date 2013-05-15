@@ -102,18 +102,19 @@ public class CleanupServlet extends HttpServlet {
                     Link link = (Link) attachment.getProperty(Attachment.URL);
                     String url = link.getValue();
                     int idx = url.indexOf("blob-key=");
-                    String bks = url.substring(idx+9);
-                    BlobKey bk = new BlobKey(bks);
-                    blobstoreService.delete(bk);
-                    log("removing " + bk);
-                    out.println("<p>removing " + bk);
+                    if (idx != -1) {
+                      String bks = url.substring(idx + 9);
+                      BlobKey bk = new BlobKey(bks);
+                      blobstoreService.delete(bk);
+                      log("removing " + bk);
+                      out.println("<p>removing " + bk.toString().replace("<", "&lt;").replace(">", "&gt;"));
+                    }
                     break;
                 }
               }
             }
-            for (Key k : preservedKeys)
-            {
-              out.println("<p>preserving "+k);
+            for (Key k : preservedKeys) {
+              out.println("<p>preserving " + k);
             }
             Query query = new Query();
             query.setAncestor(yearKey);
