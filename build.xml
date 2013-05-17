@@ -63,7 +63,7 @@
         <copy file="${hoskilib.jar}" todir="build/WEB-INF/lib"/>
     </target>
 
-    <target name="deploy" depends="build">
+    <target name="deploy" depends="build,adminconsole">
         <exec executable="cmd" inputstring="${appengine.pwd}">
             <arg value="/c"/>
             <arg value="${appcfg}"/>
@@ -74,6 +74,11 @@
         </exec>
     </target>
     
+    <target name="adminconsole" depends="init"
+          description="Creates admin console installation zip file">
+        <ant dir="${hoskiadmin.path}"/>
+    </target>
+  
     <!-- Cleans all by removing build directories. -->
     <target name="clean" depends="init"
           description="Cleans all by removing build and dist directories">
