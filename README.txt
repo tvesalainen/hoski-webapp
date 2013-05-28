@@ -7,16 +7,43 @@ HoskiWebapp source files are in https://github.com/tvesalainen/hoski-webapp.git
 
 HoskiLib source files are in https://github.com/tvesalainen/hoski-lib.git
 
-build.xml is a NetBeans build file. Deployment to server is possible in NetBeans
-IDE. Edit projects nbproject/private/private.properties file and add the following entries:
+HoskiAdmin source files are in https://github.com/tvesalainen/hoski-admin.git
 
-appengine.bin=<appengine-java-sdk-X.X.X>\\bin
-appserver=${appengine.bin}\\dev_appserver.cmd
-appcfg=${appengine.bin}\\appcfg.cmd
-appenginepwd=< here is the secret password >
+Creating development environment
+--------------------------------
 
-replace <appengine-java-sdk-X.X.X> and < here is the secret password > according
-to your environment.
+Clone the sources to separate directories. Example:
+
+hoskiwebapp
+hoskilib
+hoskiadmin
+
+Download Google App Engine SDK from appengine.google.com
+
+Create a properties file in hoskilib directory
+hoskilib/private.properties
+
+Write the following properties:
+
+appengine.path=<directory where you downloaded App Engine SDK>
+hoskiwebapp.path=<path to hoskiwebapp sources>
+hoskilib.path=<path to hoskilib sources>
+hoskiadmin.path=<path to hoskiadmin sources>
+
+Example:
+appengine.path=/Users/tkv/Downloads
+hoskilib.path=../hoskilib
+hoskiadmin.path=../hoskiadmin
+hoskiwebapp.path=../hoskiwebapp
+
+Additionally you need the normal java development tools (java, javac, ant, ...)
+
+Deploying
+---------
+
+hoskiwebapp/build.xml has target deploy. It uses Oauth2 authentication. First
+time it generates a token, which the deployment process will ask you.
+
 
 
 
