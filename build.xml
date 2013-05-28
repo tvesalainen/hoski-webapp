@@ -62,13 +62,18 @@
         <copy file="${json.jar}" todir="build/WEB-INF/lib"/>
         <copy file="${hoskilib.jar}" todir="build/WEB-INF/lib"/>
     </target>
-
+<!--
+    First deployment from your host generates a token. Deployment prompts you
+    for the token. One way to input it is by using inputstring attribute
+        <exec executable="cmd" inputstring="<token>">
+    Following deployment from the same machine don't ask it again.
+-->
     <target name="deploy" depends="build,adminconsole">
-        <exec executable="cmd" inputstring="${appengine.pwd}">
+        <exec executable="cmd">
             <arg value="/c"/>
             <arg value="${appcfg}"/>
-            <arg value="-e"/>
-            <arg value="${appengine.user}"/>
+            <arg value="--oauth2"/>
+            <arg value="--use_java7"/>
             <arg value="update"/>
             <arg value="build"/>
         </exec>
