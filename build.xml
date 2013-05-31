@@ -58,6 +58,7 @@
         <copy todir="build">
             <fileset dir="web"/>
         </copy>
+        <copy file="${appengine.api.jar}" todir="build/WEB-INF/lib"/>
         <copy file="${commons-codec.jar}" todir="build/WEB-INF/lib"/>
         <copy file="${json.jar}" todir="build/WEB-INF/lib"/>
         <copy file="${hoskilib.jar}" todir="build/WEB-INF/lib"/>
