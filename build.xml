@@ -36,7 +36,7 @@
     </target>
 
     <!-- Compile servlets and make language translation -->
-    <target name="build" depends="init">
+    <target name="build" depends="init,hoskilib">
         <mkdir dir="build"/>
         <mkdir dir="build/WEB-INF"/>
         <mkdir dir="build/WEB-INF/lib"/>
@@ -80,6 +80,11 @@
         </exec>
     </target>
     
+    <target name="hoskilib" depends="init"
+          description="Creates hoskilib">
+        <ant dir="${hoskilib.path}"/>
+    </target>
+  
     <target name="adminconsole" depends="init"
           description="Creates admin console installation zip file">
         <ant dir="${hoskiadmin.path}"/>
