@@ -65,7 +65,8 @@
     </target>
 <!--
     First deployment from your host generates a token. Deployment prompts you
-    for the token. One way to input it is by using inputstring attribute
+    for the token. You have to be logged in to google while deploying. 
+    One way to input it is by using inputstring attribute
         <exec executable="cmd" inputstring="<token>">
     Following deployment from the same machine don't ask it again.
 -->
