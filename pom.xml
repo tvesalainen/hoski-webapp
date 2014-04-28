@@ -10,9 +10,9 @@
     </parent>    
     <modelVersion>4.0.0</modelVersion>
     <packaging>war</packaging>
-    <version>1.0.1</version>
     <groupId>fi.hoski</groupId>
     <artifactId>hoski-webapp</artifactId>
+    <version>1.0.1</version>
     <name>Hoski webapp</name>
     <description>HoskiWebapp is a java web application in Google App Engine</description>
     <url>https://github.com/tvesalainen/${project.artifactId}</url>

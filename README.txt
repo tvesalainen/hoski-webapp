@@ -3,22 +3,48 @@ HoskiWebapp is a java web application in Google App Engine
 
 See Google App Engine documents at https://developers.google.com/appengine
 
-HoskiWebapp source files are in https://github.com/tvesalainen/hoski-webapp.git
+HoskiWebapp is a Maven project
+groupId:    fi.hoski
+artifactId: hoski-webapp
 
-HoskiLib source files are in https://github.com/tvesalainen/hoski-lib.git
+See dependencies at pom.xml.
 
-build.xml is a NetBeans build file. Deployment to server is possible in NetBeans
-IDE. Edit projects nbproject/private/private.properties file and add the following entries:
+Deployment
+----------
 
-appengine.bin=<appengine-java-sdk-X.X.X>\\bin
-appserver=${appengine.bin}\\dev_appserver.cmd
-appcfg=${appengine.bin}\\appcfg.cmd
-appenginepwd=< here is the secret password >
+Clone sources from github
 
-replace <appengine-java-sdk-X.X.X> and < here is the secret password > according
-to your environment.
+run
 
+mvn install
 
+To compile
 
+Deploy to appengine
 
+mvn appengine:update
 
+If update fails use 
+
+mvn appengine:rollback
+
+to recover
+
+Commit to git
+-------------
+
+Change <version>1.0.1</version> 
+and also 
+<appengine-web-app.version>1-0-1</appengine-web-app.version> <!-- this is the same as project.version with dots changed to dashes-->
+
+in pom.xml
+
+Deploy to Maven Central Repository
+----------------------------------
+
+See http://central.sonatype.org/ how to create environment for deployment
+
+Run:
+
+mvn clean:clean javadoc:jar source:jar deploy
+ 
