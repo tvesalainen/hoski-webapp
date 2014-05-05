@@ -1,6 +1,9 @@
 
 HoskiWebapp is a java web application in Google App Engine
 
+HoskiAdmin java application can be downloaded at:
+http://hsk-members.appspot.com/hsk-members-admin.zip
+
 See Google App Engine documents at https://developers.google.com/appengine
 
 HoskiWebapp is a Maven project
