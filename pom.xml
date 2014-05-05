@@ -43,7 +43,7 @@
         <url>www.hoski.fi</url>
     </organization>
     <properties>
-        <hoski-admin-version>1.0.3</hoski-admin-version>    <!-- version of admin install zip-->
+        <hoski-admin-version>1.0.4</hoski-admin-version>    <!-- version of admin install zip-->
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <appengine.target.version>1.9.3</appengine.target.version>
