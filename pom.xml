@@ -39,14 +39,14 @@
         </developer>
     </developers>
     <organization>
-        <name>Helsingfors Segelklubb r.y.</name>
+        <name>Helsingfors Segelklubb ry</name>
         <url>www.hoski.fi</url>
     </organization>
     <properties>
         <hoski-admin-version>1.0.4</hoski-admin-version>    <!-- version of admin install zip-->
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-        <appengine.target.version>1.9.3</appengine.target.version>
+        <appengine.target.version>1.9.4</appengine.target.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -54,7 +54,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>hoski-weblib</artifactId>
-            <version>[1.0.1,]</version>
+            <version>[1.0.2,]</version>
             <type>war</type>
         </dependency>
         <!-- This dependency is for downloadable admin.zip -->    

@@ -22,6 +22,9 @@ mvn appengine:update
 If update fails use 
 
 mvn appengine:rollback
+
+If version changed, take the new version in use in https://appengine.google.com/
+
 Commit to git
 -------------
 
