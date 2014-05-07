@@ -7,7 +7,7 @@
     <packaging>war</packaging>
     <groupId>fi.hoski</groupId>
     <artifactId>hsk-members</artifactId>
-    <version>3</version> <!-- version must be without dots because it s used in appengine-web.xml -->
+    <version>4</version> <!-- version must be without dots because it s used in appengine-web.xml -->
     <name>Hoski Webapp</name>
     <description>HoskiWebapp is a java web application in Google App Engine</description>
     <url>https://github.com/tvesalainen/hoski-webapp</url>
