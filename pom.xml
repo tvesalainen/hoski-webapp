@@ -7,7 +7,7 @@
     <packaging>war</packaging>
     <groupId>fi.hoski</groupId>
     <artifactId>hsk-members</artifactId>
-    <version>5</version> <!-- version must be without dots because it s used in appengine-web.xml -->
+    <version>4</version> <!-- version must be without dots because it s used in appengine-web.xml -->
     <name>Hoski Webapp</name>
     <description>HoskiWebapp is a java web application in Google App Engine</description>
     <url>https://github.com/tvesalainen/hoski-webapp</url>
@@ -46,7 +46,7 @@
         <hoski-admin-version>1.0.4</hoski-admin-version>    <!-- version of admin install zip-->
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-        <appengine.target.version>1.9.18</appengine.target.version>
+        <appengine.target.version>1.9.4</appengine.target.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
