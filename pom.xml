@@ -46,7 +46,7 @@
         <hoski-admin-version>1.0.4</hoski-admin-version>    <!-- version of admin install zip-->
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-        <appengine.target.version>1.9.4</appengine.target.version>
+        <appengine.target.version>1.9.18</appengine.target.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
