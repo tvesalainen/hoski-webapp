@@ -173,8 +173,8 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MenuServlet</servlet-name>
-        <url-pattern>/member/menu</url-pattern>
-        <url-pattern>/races/menu</url-pattern>
+        <url-pattern>/member/menu/*</url-pattern>
+        <url-pattern>/races/menu/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RaceEntryServlet</servlet-name>
