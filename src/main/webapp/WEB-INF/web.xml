@@ -203,6 +203,9 @@
     <servlet-mapping>
         <servlet-name>KeyInfoServlet</servlet-name>
         <url-pattern>/member/keyinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KeyInfoServlet</servlet-name>
         <url-pattern>/races/keyinfo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
