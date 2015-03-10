@@ -202,8 +202,8 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>KeyInfoServlet</servlet-name>
-        <url-pattern>/member/keyinfo</url-pattern>
-        <url-pattern>/races/keyinfo</url-pattern>
+        <url-pattern>/member/keyinfo/*</url-pattern>
+        <url-pattern>/races/keyinfo/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CustomCSSServlet</servlet-name>
@@ -211,12 +211,12 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EntityListServlet</servlet-name>
-        <url-pattern>/member/list</url-pattern>
-        <url-pattern>/races/list</url-pattern>
+        <url-pattern>/member/list/*</url-pattern>
+        <url-pattern>/races/list/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminEntityListServlet</servlet-name>
-        <url-pattern>/races/admin/list</url-pattern>
+        <url-pattern>/races/admin/list/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CleanupServlet</servlet-name>
