@@ -15,7 +15,7 @@
    You should have received a copy of the GNU Affero General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>fi.hoski.web.auth.AuthFilter</filter-class>
@@ -173,8 +173,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MenuServlet</servlet-name>
-        <url-pattern>/member/menu/*</url-pattern>
-        <url-pattern>/races/menu/*</url-pattern>
+        <url-pattern>/member/menu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MenuServlet</servlet-name>
+        <url-pattern>/races/menu</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RaceEntryServlet</servlet-name>
@@ -203,6 +206,9 @@
     <servlet-mapping>
         <servlet-name>KeyInfoServlet</servlet-name>
         <url-pattern>/member/keyinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KeyInfoServlet</servlet-name>
         <url-pattern>/races/keyinfo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
@@ -211,12 +217,15 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EntityListServlet</servlet-name>
-        <url-pattern>/member/list/*</url-pattern>
-        <url-pattern>/races/list/*</url-pattern>
+        <url-pattern>/member/list</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EntityListServlet</servlet-name>
+        <url-pattern>/races/list</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminEntityListServlet</servlet-name>
-        <url-pattern>/races/admin/list/*</url-pattern>
+        <url-pattern>/races/admin/list</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CleanupServlet</servlet-name>
