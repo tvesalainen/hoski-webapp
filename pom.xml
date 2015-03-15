@@ -43,7 +43,7 @@
         <url>www.hoski.fi</url>
     </organization>
     <properties>
-        <hoski-admin-version>1.0.4</hoski-admin-version>    <!-- version of admin install zip-->
+        <hoski-admin-version>1.0.5</hoski-admin-version>    <!-- version of admin install zip-->
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <appengine.target.version>1.9.18</appengine.target.version>
@@ -54,8 +54,13 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>hoski-weblib</artifactId>
-            <version>[1.0.2,]</version>
+            <version>1.0.2</version>
             <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>hoski-lib</artifactId>
+            <version>[1.0.4,]</version>
         </dependency>
         <!-- This dependency is for downloadable admin.zip -->    
         <dependency>
@@ -68,10 +73,6 @@
                 <exclusion>
                     <groupId>${project.groupId}</groupId>
                     <artifactId>hoski-lib</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.google.gdata</groupId>
-                     <artifactId>core</artifactId>
                 </exclusion>
                 <exclusion>
                     <groupId>org.vesalainen.dsql</groupId>
