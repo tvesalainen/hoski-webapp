@@ -243,7 +243,6 @@
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
-    <!--
     <security-constraint>
         <display-name>https</display-name>
         <web-resource-collection>
@@ -256,7 +255,6 @@
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
-    -->
     <security-constraint>
         <display-name>Upload</display-name>
         <web-resource-collection>
