@@ -16,7 +16,7 @@
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
             <includes>
-                <include>fi.hoski:hoski-admin</include>
+                <include>fi.hoski:hoski-admin:jar:jar-with-dependencies:${hoski-admin-version}</include>
             </includes>
             <outputDirectory>/</outputDirectory>
             <outputFileNameMapping>
