@@ -5,13 +5,13 @@
     <parent>
         <groupId>fi.hoski</groupId>
         <artifactId>parent</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.6</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>war</packaging>
     <groupId>fi.hoski</groupId>
     <artifactId>hsk-members</artifactId>
-    <version>5</version> <!-- version must be without dots because it s used in appengine-web.xml -->
+    <version>6</version> <!-- version must be without dots because it s used in appengine-web.xml -->
     <name>Hoski Webapp</name>
     <description>HoskiWebapp is a java web application in Google App Engine</description>
 
