@@ -147,6 +147,10 @@
         <servlet-name>CleanupServlet</servlet-name>
         <servlet-class>fi.hoski.web.forms.CleanupServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>fi.hoski.web.forms.AdminServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RemoteApiServlet</servlet-name>
         <url-pattern>/remote_api</url-pattern>
@@ -231,6 +235,10 @@
         <servlet-name>CleanupServlet</servlet-name>
         <url-pattern>/cleanup</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -291,6 +299,20 @@
             <role-name>admin</role-name>
         </auth-constraint>
     </security-constraint>
+    <!--
+    <security-constraint>
+        <display-name>Admin</display-name>
+        <web-resource-collection>
+            <web-resource-name>Admin</web-resource-name>
+            <description/>
+            <url-pattern>/admin</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    -->
     <security-role>
         <description/>
         <role-name>admin</role-name>

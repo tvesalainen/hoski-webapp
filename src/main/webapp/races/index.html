@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-   Copyright (C) 2012 Helsingfors Segelklubb ry
+   Copyright (C) 2016 Helsingfors Segelklubb ry
   
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU Affero General Public License as published by
@@ -18,13 +18,15 @@
 <html>
   <head>
     <title>HSK:n kilpailusivut</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="../css/hoski.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="hoskievents" content="/races/menu?menuKind=RaceFleet&amp;filter=Ranking$equals;false" />
     <meta name="hoskiweekly" content="/races/menu?menuKind=RaceFleet&amp;filter=Ranking$equals;true" />
     <meta name="hoskiresults" content="/races/menu?menuKind=Attachment&amp;filter=Type$equals;2&amp;all=true&rev=true" />
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/hoskievent.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="/js/hoskievent.js"></script>
   </head>
   <body>
     <div id="container">
@@ -44,6 +46,9 @@
         <p><small><a href="/source.html">Lähdekoodi</a></small>
         <div id="hoskiresults" class="ajaxload events races">&nbsp;</div>
       </div>	
+    </div>
+    <div id="admin-dialog" title="Hallinta">
+        <div id="admin-dialog-attachments"></div>
     </div>
   </body>
 </html>
