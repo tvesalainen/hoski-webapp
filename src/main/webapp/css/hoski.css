@@ -76,3 +76,6 @@ div.hoskipopup { font-size: 1em!important; }
 thead .header {  background: url('/img/bg.gif') no-repeat center right; cursor: pointer; padding: 0 4px 0 2px; }
 thead .headerSortUp { background-image: url('/img/asc.gif'); }
 thead .headerSortDown { background-image: url('/img/desc.gif'); }
+
+/* for data-hoski-key */
+#column1 [data-hoski-key] { border-radius: 30%;background: #ff00ff; cursor: pointer;}
