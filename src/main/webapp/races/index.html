@@ -32,7 +32,7 @@
     <div id="container">
       <div id="navi">&nbsp;</div>
       <div id="column1">
-        <h1>HSK tulevat kilpailut <small>Kommande tävlingar/Upcoming races</small></h1>
+          <h1>HSK:n kilpailut <span class="hoski-year"></span><small>Kommande tävlingar/Upcoming races</small></h1>
         <div id="hoskievents" class="ajaxload events races">&nbsp;</div>
         <div id="hoskiweekly" class="ajaxload events races">&nbsp;</div>
       </div>
@@ -43,12 +43,22 @@
 	<p>Welcome to the HSK race pages.</p>
         <p/>
 	<p>HSK:n veneet eivät maksa kilpailumaksua, paitsi LM-, SM-, PM-, EM- ja MM-kisoissa.</p>
+        <p><small><a href="/admin?action=login">kirjaudu sisään</a></small>
+        <p><small><a href="/admin?action=logout">kirjaudu ulos</a></small>
         <p><small><a href="/source.html">Lähdekoodi</a></small>
         <div id="hoskiresults" class="ajaxload events races">&nbsp;</div>
       </div>	
     </div>
     <div id="admin-dialog" title="Hallinta">
-        <div id="admin-dialog-attachments"></div>
+        <button id="admin-dialog-sailwave-button" type="button">Hae SailWave tiedosto</button><br>
+        <button id="admin-dialog-remove-attachment-button" type="button">Poista liitteitä</button><br>
+        <button id="admin-dialog-add-attachment-button" type="button">Lisää liite</button>
+    </div>
+    <div id="admin-dialog-sailwave" title="SailWave">
+    </div>
+    <div id="admin-dialog-remove-attachment" title="Poista liitteet">
+    </div>
+    <div id="admin-dialog-add-attachment" title="Lisää liite">
     </div>
   </body>
 </html>
