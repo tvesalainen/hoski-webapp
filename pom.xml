@@ -25,24 +25,6 @@
             <groupId>fi.hoski</groupId>
             <artifactId>hoski-lib</artifactId>
         </dependency>
-        <!-- This dependency is for downloadable admin.zip -->    
-        <!--
-        <dependency>
-            <groupId>fi.hoski</groupId>
-            <artifactId>hoski-admin</artifactId>
-            <classifier>jar-with-dependencies</classifier>
-            <exclusions>
-                <exclusion>
-                    <groupId>fi.hoski</groupId>
-                    <artifactId>hoski-lib</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.vesalainen.dsql</groupId>
-                    <artifactId>dsql</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>    
-        -->
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-1.0-sdk</artifactId>
@@ -53,27 +35,6 @@
         <outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}/WEB-INF/classes</outputDirectory> 
                                    
         <plugins>
-            <!--
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <finalName>${project.artifactId}</finalName>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>create-admin-install.zip</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <descriptor>${basedir}/src/main/assembly/admin-install.xml</descriptor>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>            
-            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
